@@ -4,7 +4,7 @@ La plantilla es una carpeta con archivos estáticos. Solo necesitas **Node.js 18
 
 ## Opción A: usar como plantilla de GitHub
 
-1. Abre el [repositorio](https://github.com/jrcesara7-bit/plantilla-documentacion) y pulsa **Use this template** → **Create a new repository**.
+1. Abre el [repositorio](https://github.com/jrcesara7-bit/folderdocs) y pulsa **Use this template** → **Create a new repository**.
 2. Clona tu copia:
 
 ```bash
@@ -15,7 +15,7 @@ cd TU-REPO
 ## Opción B: clonar y empezar de cero
 
 ```bash
-git clone https://github.com/jrcesara7-bit/plantilla-documentacion.git mi-documentacion
+git clone https://github.com/jrcesara7-bit/folderdocs.git mi-documentacion
 cd mi-documentacion
 rm -rf .git && git init
 ```

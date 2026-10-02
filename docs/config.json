@@ -1,14 +1,14 @@
 {
   "site": {
-    "title": "Plantilla Docs",
+    "title": "folderdocs",
     "subtitle": "Documentación en Markdown, sin build",
-    "footer": "Hecho con Plantilla de documentación · Licencia MIT",
+    "footer": "folderdocs · Licencia MIT",
     "version": "v1.0",
     "lang": "es",
     "home": "index",
-    "repo": "jrcesara7-bit/plantilla-documentacion",
+    "repo": "jrcesara7-bit/folderdocs",
     "branch": "main",
-    "contributeUrl": "https://github.com/jrcesara7-bit/plantilla-documentacion/blob/main/CONTRIBUTING.md",
+    "contributeUrl": "https://github.com/jrcesara7-bit/folderdocs/blob/main/CONTRIBUTING.md",
     "rootSection": "General"
   }
 }

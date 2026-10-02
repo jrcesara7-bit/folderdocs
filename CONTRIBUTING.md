@@ -4,8 +4,8 @@ Gracias por querer mejorar esta plantilla. Las contribuciones pequeñas y enfoca
 
 ## Antes de empezar
 
-- Para dudas de uso, usa [Discussions](https://github.com/jrcesara7-bit/plantilla-documentacion/discussions).
-- Para errores y propuestas, abre una [incidencia](https://github.com/jrcesara7-bit/plantilla-documentacion/issues/new/choose) y describe el caso. Si el cambio es grande, conviene comentarlo antes de escribir código.
+- Para dudas de uso, usa [Discussions](https://github.com/jrcesara7-bit/folderdocs/discussions).
+- Para errores y propuestas, abre una [incidencia](https://github.com/jrcesara7-bit/folderdocs/issues/new/choose) y describe el caso. Si el cambio es grande, conviene comentarlo antes de escribir código.
 - Es un proyecto pequeño y mantenido en el tiempo libre: puede tardar en responder.
 
 ## Principios del proyecto
@@ -22,8 +22,8 @@ Una propuesta encaja mejor si respeta esto:
 Necesitas Node.js 18 o superior.
 
 ```bash
-git clone https://github.com/TU-USUARIO/plantilla-documentacion.git
-cd plantilla-documentacion
+git clone https://github.com/TU-USUARIO/folderdocs.git
+cd folderdocs
 npm run dev        # http://localhost:8000
 npm test
 ```

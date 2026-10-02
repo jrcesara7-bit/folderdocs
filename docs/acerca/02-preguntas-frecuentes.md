@@ -34,4 +34,4 @@ Usa la función de imprimir del navegador: la hoja de estilos oculta el menú y 
 
 ## ¿Dónde reporto un problema o propongo una mejora?
 
-En las [incidencias del repositorio](https://github.com/jrcesara7-bit/plantilla-documentacion/issues). La guía para contribuir está en `CONTRIBUTING.md`.
+En las [incidencias del repositorio](https://github.com/jrcesara7-bit/folderdocs/issues). La guía para contribuir está en `CONTRIBUTING.md`.

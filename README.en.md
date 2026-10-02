@@ -1,14 +1,14 @@
 <div align="center">
 
-# Documentation template
+# folderdocs
 
-**Write Markdown files and get a documentation site with an automatic menu, search and light/dark themes. No build step, nothing to install.**
+**Documentation template for Markdown. Your folders are the menu: write files and get a site with search and light/dark themes. No build step, nothing to install.**
 
-[![CI](https://github.com/jrcesara7-bit/plantilla-documentacion/actions/workflows/ci.yml/badge.svg)](https://github.com/jrcesara7-bit/plantilla-documentacion/actions/workflows/ci.yml)
+[![CI](https://github.com/jrcesara7-bit/folderdocs/actions/workflows/ci.yml/badge.svg)](https://github.com/jrcesara7-bit/folderdocs/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Node 18+](https://img.shields.io/badge/node-%E2%89%A518-339933)
 
-[**Live demo**](https://jrcesara7-bit.github.io/plantilla-documentacion/) · [Report a bug](https://github.com/jrcesara7-bit/plantilla-documentacion/issues/new/choose) · [Español](README.md)
+[**Live demo**](https://jrcesara7-bit.github.io/folderdocs/) · [Report a bug](https://github.com/jrcesara7-bit/folderdocs/issues/new/choose) · [Español](README.md)
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="docs/img/preview-light.png">
@@ -45,7 +45,7 @@ You need [Node.js](https://nodejs.org) 18 or later.
 
 ```bash
 # 1. Use the template ("Use this template" button on GitHub) or clone it
-git clone https://github.com/jrcesara7-bit/plantilla-documentacion.git my-docs
+git clone https://github.com/jrcesara7-bit/folderdocs.git my-docs
 cd my-docs
 
 # 2. Start the local server (it rebuilds the menu on every reload)

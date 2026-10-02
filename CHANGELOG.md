@@ -25,4 +25,4 @@ Primera versión pública.
 - Flujos de GitHub Actions: pruebas, comprobación de `nav.json` y publicación en GitHub Pages.
 - Pruebas del generador de menú (`npm test`).
 
-[1.0.0]: https://github.com/jrcesara7-bit/plantilla-documentacion/releases/tag/v1.0.0
+[1.0.0]: https://github.com/jrcesara7-bit/folderdocs/releases/tag/v1.0.0

@@ -1,4 +1,4 @@
-# Plantilla de documentación
+# folderdocs
 
 > [!NOTE]
 > Esta página es la demo de la plantilla, y a la vez su documentación. Todo lo que ves está escrito en archivos `.md` dentro de `docs/`: no hay HTML que mantener ni paso de compilación.

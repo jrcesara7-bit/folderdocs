@@ -11,7 +11,7 @@ Hay muy buenas herramientas de documentación. Esta ocupa un espacio concreto: *
 
 ## Comparación con otras opciones
 
-| | Plantilla Docs | Docsify | MkDocs | Docusaurus / VitePress |
+| | folderdocs | Docsify | MkDocs | Docusaurus / VitePress |
 | --- | --- | --- | --- | --- |
 | Paso de compilación | No | No | Sí | Sí |
 | Necesita instalar | Node (solo para el servidor local) | Nada (CDN) o npm | Python | Node + dependencias |

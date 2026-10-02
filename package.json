@@ -1,5 +1,5 @@
 {
-  "name": "plantilla-documentacion",
+  "name": "folderdocs",
   "version": "1.0.0",
   "description": "Plantilla de documentación estática en Markdown: sin build ni dependencias, menú automático desde carpetas, buscador y tema oscuro/claro.",
   "keywords": [
@@ -13,11 +13,11 @@
     "zero-dependencies",
     "documentacion"
   ],
-  "homepage": "https://jrcesara7-bit.github.io/plantilla-documentacion/",
-  "bugs": "https://github.com/jrcesara7-bit/plantilla-documentacion/issues",
+  "homepage": "https://jrcesara7-bit.github.io/folderdocs/",
+  "bugs": "https://github.com/jrcesara7-bit/folderdocs/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jrcesara7-bit/plantilla-documentacion.git"
+    "url": "git+https://github.com/jrcesara7-bit/folderdocs.git"
   },
   "license": "MIT",
   "author": "jrcesara7-bit",

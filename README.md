@@ -1,14 +1,14 @@
 <div align="center">
 
-# Plantilla de documentación
+# folderdocs
 
-**Escribe archivos Markdown y obtén un sitio de documentación con menú automático, buscador y tema oscuro/claro. Sin build y sin dependencias que instalar.**
+**Plantilla de documentación en Markdown. Tus carpetas son el menú: escribe archivos y obtén un sitio con buscador y tema oscuro/claro. Sin build y sin dependencias que instalar.**
 
-[![CI](https://github.com/jrcesara7-bit/plantilla-documentacion/actions/workflows/ci.yml/badge.svg)](https://github.com/jrcesara7-bit/plantilla-documentacion/actions/workflows/ci.yml)
+[![CI](https://github.com/jrcesara7-bit/folderdocs/actions/workflows/ci.yml/badge.svg)](https://github.com/jrcesara7-bit/folderdocs/actions/workflows/ci.yml)
 [![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-blue.svg)](LICENSE)
 ![Node 18+](https://img.shields.io/badge/node-%E2%89%A518-339933)
 
-[**Ver demo**](https://jrcesara7-bit.github.io/plantilla-documentacion/) · [Documentación](https://jrcesara7-bit.github.io/plantilla-documentacion/#/empezar/01-instalacion) · [Reportar un error](https://github.com/jrcesara7-bit/plantilla-documentacion/issues/new/choose) · [English](README.en.md)
+[**Ver demo**](https://jrcesara7-bit.github.io/folderdocs/) · [Documentación](https://jrcesara7-bit.github.io/folderdocs/#/empezar/01-instalacion) · [Reportar un error](https://github.com/jrcesara7-bit/folderdocs/issues/new/choose) · [English](README.en.md)
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="docs/img/preview-light.png">
@@ -43,7 +43,7 @@ Necesitas [Node.js](https://nodejs.org) 18 o superior.
 
 ```bash
 # 1. Usa la plantilla (botón "Use this template" en GitHub) o clónala
-git clone https://github.com/jrcesara7-bit/plantilla-documentacion.git mi-documentacion
+git clone https://github.com/jrcesara7-bit/folderdocs.git mi-documentacion
 cd mi-documentacion
 
 # 2. Arranca el servidor local (regenera el menú en cada recarga)
@@ -73,7 +73,7 @@ docs/
 └── _borrador/                  lo que empieza con _ o . se ignora
 ```
 
-El menú se guarda en `docs/nav.json` (generado; no se edita a mano). Detalles en la [guía de organización](https://jrcesara7-bit.github.io/plantilla-documentacion/#/guia/01-organizar-contenido).
+El menú se guarda en `docs/nav.json` (generado; no se edita a mano). Detalles en la [guía de organización](https://jrcesara7-bit.github.io/folderdocs/#/guia/01-organizar-contenido).
 
 ## Personalización
 
@@ -86,7 +86,7 @@ El menú se guarda en `docs/nav.json` (generado; no se edita a mano). Detalles e
 
 ## Publicar
 
-El flujo `.github/workflows/pages.yml` publica el sitio en GitHub Pages en cada push a `main`. Solo tienes que ir a **Settings → Pages → Source → GitHub Actions**. Para Netlify, Cloudflare Pages u otros hosts, mira [Publicar](https://jrcesara7-bit.github.io/plantilla-documentacion/#/publicar/02-otros-hosts).
+El flujo `.github/workflows/pages.yml` publica el sitio en GitHub Pages en cada push a `main`. Solo tienes que ir a **Settings → Pages → Source → GitHub Actions**. Para Netlify, Cloudflare Pages u otros hosts, mira [Publicar](https://jrcesara7-bit.github.io/folderdocs/#/publicar/02-otros-hosts).
 
 ## Limitaciones
 
@@ -97,7 +97,7 @@ Se dicen aquí para que decidas con información:
 - Sin versionado de documentación ni selector de idioma integrado.
 - El HTML dentro de los `.md` no se filtra: no es apto para contenido de usuarios desconocidos.
 
-Más contexto en [Por qué esta plantilla](https://jrcesara7-bit.github.io/plantilla-documentacion/#/acerca/01-por-que-esta-plantilla).
+Más contexto en [Por qué esta plantilla](https://jrcesara7-bit.github.io/folderdocs/#/acerca/01-por-que-esta-plantilla).
 
 ## Desarrollo y contribuciones
 
