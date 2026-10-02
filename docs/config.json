@@ -1,12 +1,14 @@
 {
   "site": {
-    "title": "Mi Proyecto",
-    "subtitle": "Documentación de Mi Proyecto en español",
-    "footer": "© 2026 Mi Proyecto. Documentación generada desde archivos Markdown.",
-    "version": "v: estable",
+    "title": "Plantilla Docs",
+    "subtitle": "Documentación en Markdown, sin build",
+    "footer": "Hecho con Plantilla de documentación · Licencia MIT",
+    "version": "v1.0",
+    "lang": "es",
     "home": "index",
     "repo": "jrcesara7-bit/plantilla-documentacion",
     "branch": "main",
-    "contributeUrl": ""
+    "contributeUrl": "https://github.com/jrcesara7-bit/plantilla-documentacion/blob/main/CONTRIBUTING.md",
+    "rootSection": "General"
   }
 }

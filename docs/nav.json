@@ -1,46 +1,86 @@
 [
   {
-    "title": "Acerca de",
-    "items": [
-      {
-        "title": "Introducción",
-        "path": "acerca/introduccion"
-      },
-      {
-        "title": "Preguntas frecuentes",
-        "path": "acerca/faq"
-      }
-    ]
-  },
-  {
-    "title": "Primeros pasos",
+    "title": "Empezar",
     "items": [
       {
         "title": "Instalación",
-        "path": "primeros-pasos/instalacion"
+        "path": "empezar/01-instalacion"
       },
       {
-        "title": "Tu primer proyecto",
-        "path": "primeros-pasos/primer-proyecto/index",
-        "items": [
-          {
-            "title": "Estructura de carpetas",
-            "path": "primeros-pasos/primer-proyecto/estructura"
-          }
-        ]
+        "title": "Estructura del proyecto",
+        "path": "empezar/02-estructura-del-proyecto"
+      },
+      {
+        "title": "Tu primera página",
+        "path": "empezar/03-tu-primera-pagina"
       }
     ]
   },
   {
-    "title": "Manual",
+    "title": "Guía",
     "items": [
       {
         "title": "Organizar el contenido",
-        "path": "manual/organizar-contenido"
+        "path": "guia/01-organizar-contenido"
       },
       {
-        "title": "Guía de estilo Markdown",
-        "path": "manual/guia-markdown"
+        "title": "Sintaxis Markdown",
+        "path": "guia/02-sintaxis-markdown"
+      },
+      {
+        "title": "Portada y recuadros",
+        "path": "guia/03-portada-y-recuadros"
+      },
+      {
+        "title": "Enlaces e imágenes",
+        "path": "guia/04-enlaces-e-imagenes"
+      }
+    ]
+  },
+  {
+    "title": "Personalizar",
+    "items": [
+      {
+        "title": "Configuración",
+        "path": "personalizar/01-configuracion"
+      },
+      {
+        "title": "Tema y colores",
+        "path": "personalizar/02-tema-y-colores"
+      },
+      {
+        "title": "Idioma",
+        "path": "personalizar/03-idioma"
+      }
+    ]
+  },
+  {
+    "title": "Publicar",
+    "items": [
+      {
+        "title": "GitHub Pages",
+        "path": "publicar/01-github-pages"
+      },
+      {
+        "title": "Otros hosts",
+        "path": "publicar/02-otros-hosts"
+      },
+      {
+        "title": "SEO y limitaciones",
+        "path": "publicar/03-seo-y-limitaciones"
+      }
+    ]
+  },
+  {
+    "title": "Acerca de",
+    "items": [
+      {
+        "title": "Por qué esta plantilla",
+        "path": "acerca/01-por-que-esta-plantilla"
+      },
+      {
+        "title": "Preguntas frecuentes",
+        "path": "acerca/02-preguntas-frecuentes"
       }
     ]
   }
