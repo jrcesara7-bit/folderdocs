@@ -16,7 +16,7 @@ body:
       description: Concrete steps. If possible, include the `.md` file or the folder structure that triggers it.
       placeholder: |
         1. Create docs/x/y.md with…
-        2. Open #/x/y
+        2. Open /x/y/
         3. See…
     validations:
       required: true

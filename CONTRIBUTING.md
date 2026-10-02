@@ -14,9 +14,9 @@ Thanks for wanting to improve folderdocs. Small, focused contributions are the e
 
 A proposal fits best if it respects these:
 
-1. **No build step** for people who use the template.
-2. **No new runtime dependencies.** `marked` and `highlight.js` are the only ones, and they live in `assets/vendor/`.
-3. **Few moving parts of its own**: `app.js`, `theme.css`, and the scripts in `tools/` should be readable end to end.
+1. **Little to learn and nothing to install**: one command to preview, one to build, no dependencies to `npm install`.
+2. **No new dependencies.** `marked` and `highlight.js` are the only ones, copied into `tools/vendor/` and used only at build time.
+3. **Few moving parts of its own**: the generator in `tools/lib/`, `theme.css` and `site.js` should be readable end to end.
 4. **Colors go in variables** in `theme.css`, for both themes.
 
 ## Set up your environment
@@ -34,8 +34,8 @@ npm test
 
 1. Create a branch from `main`: `git checkout -b my-change`.
 2. Make the change, with tests if it touches `tools/`.
-3. If you changed `docs/` or `docs-es/`, run `npm run nav` and commit the `nav.json` files.
-4. Try it in the browser, in dark and light themes, and at mobile width if the change is visual.
+3. Run `npm test` and `npm run build -- --strict`.
+4. Try it in the browser (`npm run dev`), in dark and light themes, and at mobile width if the change is visual.
 5. Add a line to `CHANGELOG.md` under `[Unreleased]`.
 6. Open the pull request and fill in the template.
 
@@ -45,14 +45,14 @@ English (`docs/`) is the main version and Spanish (`docs-es/`) is its translatio
 
 ## Style
 
-- Plain JavaScript, no transpilation and no dependencies: ES modules in `tools/` and an IIFE in `assets/js/app.js`.
+- Plain JavaScript, no transpilation: ES modules in `tools/` and a small IIFE in `assets/js/site.js`. The generated pages must work without JavaScript; `site.js` only enhances them.
 - Follow `.editorconfig` (UTF-8, LF, 2 spaces).
 - Comments explain *why*, not *what*.
 - Commit messages in the imperative and specific: "Fix folder order with numeric prefixes".
 
 ## Bundled dependencies
 
-To update `marked` or `highlight.js`, replace the file in `assets/vendor/` with the new version from its official package, check that the demo still works, and note the version in the commit.
+To update `marked` or `highlight.js`, replace the file in `tools/vendor/` with the new version from its official package, check that the demo still works, and note the version in the commit.
 
 ## License
 

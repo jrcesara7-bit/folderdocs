@@ -14,9 +14,9 @@ Gracias por querer mejorar esta plantilla. Las contribuciones pequeñas y enfoca
 
 Una propuesta encaja mejor si respeta esto:
 
-1. **Sin paso de compilación** para quien usa la plantilla.
-2. **Sin dependencias nuevas** en tiempo de ejecución. `marked` y `highlight.js` son las únicas, y viven en `assets/vendor/`.
-3. **Pocas piezas propias**: `app.js`, `theme.css` y `build-nav.mjs` deben poder leerse enteros.
+1. **Poco que aprender y nada que instalar**: un comando para previsualizar, otro para construir, sin dependencias que `npm install`.
+2. **Sin dependencias nuevas.** `marked` y `highlight.js` son las únicas, copiadas en `tools/vendor/` y usadas solo al construir.
+3. **Pocas piezas propias**: el generador de `tools/lib/`, `theme.css` y `site.js` deben poder leerse enteros.
 4. **Los colores van en variables** de `theme.css`, para ambos temas.
 
 ## Preparar el entorno
@@ -33,9 +33,9 @@ npm test
 ## Enviar un cambio
 
 1. Crea una rama a partir de `main`: `git checkout -b mi-cambio`.
-2. Haz el cambio, con pruebas si toca `tools/build-nav.mjs`.
-3. Si modificaste `docs/` o `docs-es/`, ejecuta `npm run nav` y sube los archivos `nav.json`.
-4. Prueba en el navegador, en tema oscuro y claro, y en ancho móvil si el cambio es visual.
+2. Haz el cambio, con pruebas si toca `tools/`.
+3. Ejecuta `npm test` y `npm run build -- --strict`.
+4. Prueba en el navegador (`npm run dev`), en tema oscuro y claro, y en ancho móvil si el cambio es visual.
 5. Añade una línea en `CHANGELOG.md`, bajo `[Sin publicar]`.
 6. Abre la solicitud de cambio y rellena la plantilla.
 
@@ -45,14 +45,14 @@ El inglés (`docs/`) es la versión principal y el español (`docs-es/`) su trad
 
 ## Estilo
 
-- JavaScript sin transpilar ni dependencias: ES modules en `tools/` y un IIFE en `assets/js/app.js`.
+- JavaScript sin transpilar: ES modules en `tools/` y un IIFE pequeño en `assets/js/site.js`. Las páginas generadas deben funcionar sin JavaScript; `site.js` solo las mejora.
 - Respeta `.editorconfig` (UTF-8, LF, 2 espacios).
 - Comentarios para explicar el *porqué*, no el *qué*.
 - Mensajes de commit en imperativo y concretos: «Corrige el orden de carpetas con prefijo numérico».
 
 ## Dependencias incluidas
 
-Para actualizar `marked` o `highlight.js`, reemplaza el archivo de `assets/vendor/` por la versión nueva desde su paquete oficial, comprueba que la demo sigue funcionando y anota la versión en el commit.
+Para actualizar `marked` o `highlight.js`, reemplaza el archivo de `tools/vendor/` por la versión nueva desde su paquete oficial, comprueba que la demo sigue funcionando y anota la versión en el commit.
 
 ## Licencia
 

@@ -12,6 +12,6 @@
 ## Checklist
 
 - [ ] `npm test` passes
-- [ ] If I touched `docs/` or `docs-es/`, I ran `npm run nav` and committed the `nav.json` files
+- [ ] `npm run build -- --strict` finishes without warnings
 - [ ] I tried the change in the browser with `npm run dev` (attach a screenshot if it is visual)
 - [ ] I updated `README.md` / `CHANGELOG.md` if needed
