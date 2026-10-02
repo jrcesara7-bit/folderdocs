@@ -1,0 +1,25 @@
+name: Proponer una mejora
+description: Una idea para la plantilla
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        La plantilla busca seguir siendo pequeña y sin dependencias. Las propuestas que lo respeten se valoran mejor.
+  - type: textarea
+    id: problema
+    attributes:
+      label: Qué problema quieres resolver
+      description: Describe la situación, no solo la solución.
+    validations:
+      required: true
+  - type: textarea
+    id: propuesta
+    attributes:
+      label: Qué propones
+    validations:
+      required: true
+  - type: textarea
+    id: alternativas
+    attributes:
+      label: Alternativas que consideraste

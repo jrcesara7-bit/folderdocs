@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm test
+
+  nav:
+    name: docs/nav.json está actualizado
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tools/build-nav.mjs
+      - name: Comprobar que no hay cambios
+        run: |
+          if ! git diff --exit-code -- docs/nav.json; then
+            echo "::error file=docs/nav.json::El menú está desactualizado. Ejecuta 'npm run nav' y sube docs/nav.json."
+            exit 1
+          fi

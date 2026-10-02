@@ -1,0 +1,40 @@
+name: Reportar un error
+description: Algo no funciona como debería
+labels: [bug]
+body:
+  - type: textarea
+    id: que-pasa
+    attributes:
+      label: Qué ocurre
+      description: Describe el problema y qué esperabas que pasara.
+    validations:
+      required: true
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Cómo reproducirlo
+      description: Pasos concretos. Si es posible, incluye el `.md` o la estructura de carpetas que lo provoca.
+      placeholder: |
+        1. Crear docs/x/y.md con…
+        2. Abrir #/x/y
+        3. Ver…
+    validations:
+      required: true
+  - type: input
+    id: navegador
+    attributes:
+      label: Navegador y versión
+      placeholder: Firefox 130, Chrome 128, Safari 17…
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Versión de Node.js
+      description: Salida de `node -v`. Déjalo vacío si el problema aparece ya publicado.
+  - type: textarea
+    id: consola
+    attributes:
+      label: Errores de la consola del navegador
+      description: Abre las herramientas de desarrollo (F12 → Consola) y pega lo que aparezca.
+      render: shell
