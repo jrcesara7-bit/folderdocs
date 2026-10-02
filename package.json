@@ -1,17 +1,18 @@
 {
   "name": "folderdocs",
-  "version": "1.0.0",
-  "description": "Static Markdown documentation template: no build step, no dependencies, automatic menu from your folders, search and light/dark themes. Multilingual.",
+  "version": "2.0.0",
+  "description": "Markdown documentation template that builds a fast static site: automatic menu from your folders, one indexable HTML page per file, search, light/dark themes and multiple languages.",
   "keywords": [
     "documentation",
     "docs",
     "markdown",
     "documentation-template",
+    "static-site-generator",
     "static-site",
     "github-pages",
-    "no-build",
-    "zero-dependencies",
+    "seo",
     "multilingual",
+    "zero-dependencies",
     "documentacion"
   ],
   "homepage": "https://jrcesara7-bit.github.io/folderdocs/",
@@ -29,7 +30,6 @@
   },
   "scripts": {
     "dev": "node tools/serve.mjs",
-    "nav": "node tools/build-nav.mjs",
     "build": "node tools/build-site.mjs",
     "test": "node --test tests/*.test.mjs"
   }

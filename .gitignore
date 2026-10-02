@@ -6,3 +6,13 @@ Thumbs.db
 .env
 .vscode/
 .idea/
+
+# Secrets and keys must never be committed
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+.npmrc
