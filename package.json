@@ -1,7 +1,7 @@
 {
   "name": "folderdocs",
   "version": "1.0.0",
-  "description": "Plantilla de documentación estática en Markdown: sin build ni dependencias, menú automático desde carpetas, buscador y tema oscuro/claro.",
+  "description": "Static Markdown documentation template: no build step, no dependencies, automatic menu from your folders, search and light/dark themes. Multilingual.",
   "keywords": [
     "documentation",
     "docs",
@@ -11,6 +11,7 @@
     "github-pages",
     "no-build",
     "zero-dependencies",
+    "multilingual",
     "documentacion"
   ],
   "homepage": "https://jrcesara7-bit.github.io/folderdocs/",
@@ -29,6 +30,7 @@
   "scripts": {
     "dev": "node tools/serve.mjs",
     "nav": "node tools/build-nav.mjs",
+    "build": "node tools/build-site.mjs",
     "test": "node --test tests/*.test.mjs"
   }
 }

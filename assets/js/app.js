@@ -1,17 +1,22 @@
-/* Lector de documentación: carga archivos .md desde /docs, los convierte a HTML
- * con marked y los pinta con el tema de theme.css. Sin paso de build.
+/* Documentation reader: loads .md files from the docs folder, converts them to HTML
+ * with marked and renders them with the theme in theme.css. No build step.
  *
- * Rutas:  #/carpeta/pagina          → docs/carpeta/pagina.md
- *         #/carpeta/pagina#seccion  → ídem, saltando al encabezado "seccion"
+ * Routes:  #/folder/page           → docs/folder/page.md
+ *          #/folder/page#section   → same, jumping to the heading "section"
+ *
+ * The docs folder defaults to "docs"; a language entry page overrides it with
+ * <html data-docs="../docs-es">.
  */
 (() => {
   'use strict';
 
-  const DOCS_DIR = 'docs';
+  const DOCS_DIR = document.documentElement.dataset.docs || 'docs';
+  // Path of the docs folder inside the repository (for the "Edit on GitHub" link).
+  const REPO_DOCS_DIR = DOCS_DIR.replace(/^(\.\.\/)+/, '');
   const $ = (sel) => document.querySelector(sel);
 
-  /* Textos de la interfaz. Para añadir un idioma, copia un bloque y ponle su código en
-   * `site.lang` de docs/config.json. Los textos que no existan caen en español. */
+  /* Interface strings. To add a language, copy a block and use its code in `site.lang`
+   * of docs/config.json. Missing strings fall back to English. */
   const I18N = {
     es: {
       siteName: 'Documentación', loading: 'Cargando…', home: 'Inicio',
@@ -44,9 +49,9 @@
       navErrorBody: 'The menu is generated from the folders in <code>docs/</code>. Run <code>node tools/build-nav.mjs</code> (or use <code>node tools/serve.mjs</code>, which does it for you).',
     },
   };
-  let strings = I18N.es;
+  let strings = I18N.en;
   const t = (key, ...args) => {
-    const value = strings[key] !== undefined ? strings[key] : I18N.es[key];
+    const value = strings[key] !== undefined ? strings[key] : I18N.en[key];
     return typeof value === 'function' ? value(...args) : value;
   };
 
@@ -55,16 +60,16 @@
     doc: $('#doc'), breadcrumb: $('#breadcrumb'), pager: $('#pager'),
     headLinks: $('#head-links'), subtitle: $('#site-subtitle'),
     brand: $('#brand'), topbarTitle: $('#topbar-title'),
-    footLabel: $('#foot-label'), siteFooter: $('#site-footer'),
+    footLabel: $('#foot-label'), languages: $('#lang-switch'), siteFooter: $('#site-footer'),
   };
 
-  let cfg;                 // contenido de docs/config.json
-  let pages = [];          // páginas del menú, en orden de lectura
+  let cfg;                 // contents of docs/config.json
+  let pages = [];          // menu pages, in reading order
   const byPath = new Map();
   let currentPath = null;
-  let loadToken = 0;       // descarta respuestas de navegaciones antiguas
+  let loadToken = 0;       // discards responses from outdated navigations
 
-  /* ----------------------------- utilidades ----------------------------- */
+  /* ------------------------------- utilities ------------------------------- */
 
   const escapeHtml = (s) => s.replace(/[&<>"']/g, (c) =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -75,7 +80,7 @@
 
   const isExternal = (href) => /^([a-z][a-z0-9+.-]*:|\/\/)/i.test(href);
 
-  /** Resuelve `href` relativo al directorio de `fromPath`; devuelve ruta limpia dentro de docs. */
+  /** Resolves `href` relative to the directory of `fromPath`; returns a clean path inside docs. */
   function resolvePath(fromPath, href) {
     const base = href.startsWith('/') ? [] : fromPath.split('/').slice(0, -1);
     for (const part of href.split('/')) {
@@ -86,10 +91,10 @@
   }
 
   function saveSetting(key, value) {
-    try { localStorage.setItem(key, value); } catch (e) { /* sin storage: el tema no se recuerda */ }
+    try { localStorage.setItem(key, value); } catch (e) { /* no storage: the theme is not remembered */ }
   }
 
-  /* ------------------------------ arranque ------------------------------ */
+  /* -------------------------------- startup -------------------------------- */
 
   async function init() {
     try {
@@ -116,9 +121,9 @@
   }
 
   function setLanguage(lang) {
-    const code = String(lang || 'es').toLowerCase().split('-')[0];
-    strings = I18N[code] || I18N.es;
-    document.documentElement.lang = I18N[code] ? code : 'es';
+    const code = String(lang || 'en').toLowerCase().split('-')[0];
+    strings = I18N[code] || I18N.en;
+    document.documentElement.lang = I18N[code] ? code : 'en';
     els.search.placeholder = t('search');
     els.search.setAttribute('aria-label', t('searchLabel'));
     $('#menu-toggle').setAttribute('aria-label', t('menu'));
@@ -152,6 +157,7 @@
     els.topbarTitle.textContent = s.title || t('siteName');
     els.subtitle.textContent = s.subtitle || s.title || '';
     els.footLabel.textContent = s.version || '';
+    renderLanguages(s.languages);
     els.siteFooter.textContent = s.footer || '';
     if (s.logo) {
       const img = document.createElement('img');
@@ -167,7 +173,21 @@
     }
   }
 
-  /* ------------------------------- menú ------------------------------- */
+  /** Language switcher: links are relative to this page's index.html. */
+  function renderLanguages(languages) {
+    els.languages.innerHTML = '';
+    if (!Array.isArray(languages) || languages.length < 2) return;
+    for (const lang of languages) {
+      const url = new URL(lang.href, location.href);
+      const current = url.pathname === location.pathname.replace(/index\.html$/, '');
+      const el = document.createElement(current ? 'span' : 'a');
+      el.textContent = lang.label;
+      if (current) el.className = 'current'; else el.href = url.pathname;
+      els.languages.append(el);
+    }
+  }
+
+  /* -------------------------------- menu -------------------------------- */
 
   function renderNav() {
     const buildItems = (items) => {
@@ -230,14 +250,14 @@
     link.scrollIntoView({ block: 'nearest' });
   }
 
-  /* ------------------------------ enrutado ------------------------------ */
+  /* -------------------------------- routing -------------------------------- */
 
   function parseHash() {
     const raw = decodeURIComponent(location.hash.replace(/^#/, ''));
     const m = raw.match(/^\/?([^#]*)(?:#(.*))?$/);
     let path = (m && m[1] || '').replace(/\/+$/, '').replace(/\.md$/i, '');
     if (!path) path = cfg.site.home || (pages[0] && pages[0].path) || 'index';
-    const valid = /^[\w\-./áéíóúñÁÉÍÓÚÑ]+$/.test(path) && !path.split('/').includes('..');
+    const valid = /^[\w\-./\p{L}]+$/u.test(path) && !path.split('/').includes('..');
     return { path: valid ? path : null, anchor: m && m[2] || '' };
   }
 
@@ -245,7 +265,7 @@
     closeMenu();
     let { path, anchor } = parseHash();
     if (path === null) return showNotFound(location.hash);
-    // #/carpeta equivale a #/carpeta/index
+    // #/folder is equivalent to #/folder/index
     if (!byPath.has(path) && byPath.has(`${path}/index`)) path = `${path}/index`;
     if (path === currentPath) return scrollToAnchor(anchor);
     await loadPage(path, anchor);
@@ -308,7 +328,7 @@
     return { meta, body: text.slice(m[0].length) };
   }
 
-  /* ----------------------- cabecera, migas, paginador ----------------------- */
+  /* ----------------------- header, breadcrumbs, pager ----------------------- */
 
   function renderBreadcrumb(page, title) {
     els.breadcrumb.innerHTML = '';
@@ -329,7 +349,7 @@
     els.headLinks.innerHTML = '';
     if (repo) {
       const a = document.createElement('a');
-      a.href = `https://github.com/${repo}/edit/${branch || 'main'}/${DOCS_DIR}/${path}.md`;
+      a.href = `https://github.com/${repo}/edit/${branch || 'main'}/${REPO_DOCS_DIR}/${path}.md`;
       a.target = '_blank'; a.rel = 'noopener';
       a.textContent = t('edit');
       els.headLinks.append(a);
@@ -356,7 +376,7 @@
     if (i < pages.length - 1) link(pages[i + 1], 'next', (t) => `${t} »`);
   }
 
-  /* ------------------ post-proceso del HTML generado ------------------ */
+  /* ------------------ post-processing of the generated HTML ------------------ */
 
   const ADMONITIONS = {
     note: 'i', tip: '✓', important: '!', warning: '!', caution: '×',
@@ -379,7 +399,7 @@
         a.target = '_blank'; a.rel = 'noopener noreferrer';
         if (!a.querySelector('img') && !a.classList.contains('tile')) a.classList.add('external');
       } else if (href.startsWith('#/')) {
-        // ya es una ruta de la app (útil en HTML escrito a mano, p. ej. los tiles)
+        // already an app route (useful in hand-written HTML, e.g. the tiles)
       } else if (href.startsWith('#')) {
         a.setAttribute('href', `#/${path}#${href.slice(1)}`);
       } else {
@@ -476,7 +496,7 @@
     });
   }
 
-  /* ------------------------------ búsqueda ------------------------------ */
+  /* -------------------------------- search -------------------------------- */
 
   let indexPromise = null;
 
@@ -511,7 +531,7 @@
     els.nav.hidden = true; els.results.hidden = false;
     const terms = fold(query).split(/\s+/).filter(Boolean);
     const index = await buildIndex();
-    if (els.search.value.trim() !== query) return;   // el usuario siguió escribiendo
+    if (els.search.value.trim() !== query) return;   // the user kept typing
 
     const hits = [];
     for (const entry of index) {
@@ -547,7 +567,7 @@
     const pos = Math.min(...terms.map((t) => entry.textFold.indexOf(t)).filter((p) => p >= 0), Infinity);
     if (!isFinite(pos)) return escapeHtml(entry.text.slice(0, 110));
     const start = Math.max(0, pos - 40);
-    // fold() conserva la longitud en español, así que los índices coinciden con el texto original
+    // fold() keeps the length for Latin text, so indexes match the original text
     const raw = entry.text.slice(start, start + 140);
     let html = escapeHtml(raw);
     for (const t of terms) {
@@ -556,7 +576,7 @@
     return (start > 0 ? '…' : '') + html + '…';
   }
 
-  /* ---------------------------- UI auxiliar ---------------------------- */
+  /* ---------------------------- auxiliary UI ---------------------------- */
 
   function closeMenu() { document.body.classList.remove('nav-open'); }
 

@@ -1,6 +1,6 @@
 # Configuración
 
-Los datos del sitio están en `docs/config.json`, dentro de la clave `site`:
+Los datos del sitio están en el `config.json` de la carpeta de documentación, dentro de la clave `site`:
 
 ```json
 {
@@ -10,6 +10,10 @@ Los datos del sitio están en `docs/config.json`, dentro de la clave `site`:
     "footer": "© 2026 Mi Proyecto",
     "version": "v1.0",
     "lang": "es",
+    "languages": [
+      { "label": "EN", "href": "../" },
+      { "label": "ES", "href": "./" }
+    ],
     "home": "index",
     "repo": "usuario/repositorio",
     "branch": "main",
@@ -27,6 +31,7 @@ Los datos del sitio están en `docs/config.json`, dentro de la clave `site`:
 | `footer` | Pie de página. |
 | `version` | Etiqueta en la esquina inferior del menú. Déjala vacía para ocultarla. |
 | `lang` | Idioma de la interfaz: `es` o `en`. Ver [Idioma](03-idioma.md). |
+| `languages` | Lista opcional de `{ "label", "href" }` que muestra un selector de idioma. `href` es relativo al `index.html` de la página. |
 | `home` | Archivo de la portada, sin extensión. Por defecto `index`. |
 | `repo` | `usuario/repositorio`. Activa el enlace «Editar en GitHub» de cada página. Vacío = sin enlace. |
 | `branch` | Rama usada en ese enlace. Por defecto `main`. |

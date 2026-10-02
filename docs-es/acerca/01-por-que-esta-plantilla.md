@@ -18,7 +18,7 @@ Hay muy buenas herramientas de documentación. Esta ocupa un espacio concreto: *
 | Menú | Automático desde carpetas | Manual (`_sidebar.md`) | Automático o manual | Automático o manual |
 | Una página HTML por documento (SEO) | No | No | Sí | Sí |
 | Ecosistema de temas y plugins | No | Sí | Muy amplio | Muy amplio |
-| Documentación versionada / multiidioma | No | Limitado | Sí | Sí |
+| Documentación versionada / multiidioma | No / un sitio por idioma | Limitado | Sí | Sí |
 
 Las filas de las otras herramientas son una orientación general: consulta su documentación para el detalle actual.
 

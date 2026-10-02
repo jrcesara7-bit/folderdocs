@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Tema de documentación (inspirado en Godot Docs / Read the Docs oscuro).
-   Todos los colores viven en variables: cambia la paleta aquí y listo.
+   Documentation theme (inspired by Godot Docs / the dark Read the Docs theme).
+   Every color lives in a variable: change the palette here and you're done.
    ========================================================================== */
 
 :root,
@@ -18,7 +18,7 @@
   --text-muted: #9aa1a8;
   --border: #3d4248;
 
-  --accent: #ff5d7d;        /* títulos de sección del menú */
+  --accent: #ff5d7d;        /* menu section titles */
   --link: #62b4f5;
   --link-hover: #9ad0fa;
 
@@ -27,14 +27,14 @@
   --tile-blue: #1f3d9e;
   --tile-red: #8c1b4b;
 
-  /* Admonitions: [fondo cuerpo, fondo título, texto] */
+  /* Admonitions: [body background, title background, text] */
   --note-bg: #2a3a4d;   --note-head: #355979;   --note-text: #7fc4ff;
   --tip-bg: #25402f;    --tip-head: #2f6a45;    --tip-text: #7fe0a3;
   --important-bg: #3c3254; --important-head: #5a4890; --important-text: #c4aaff;
   --warning-bg: #4a3b21; --warning-head: #8a6a1c; --warning-text: #ffd36b;
   --caution-bg: #4a2a2a; --caution-head: #8e3434; --caution-text: #ff9a9a;
 
-  /* Resaltado de código */
+  /* Code highlighting */
   --hl-comment: #7f8892;
   --hl-keyword: #ff7ab2;
   --hl-string: #8fd694;
@@ -97,7 +97,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 button { font: inherit; color: inherit; cursor: pointer; }
 
 /* --------------------------------------------------------------------------
-   Layout: sidebar fijo + columna de contenido (como Read the Docs)
+   Layout: fixed sidebar + content column (like Read the Docs)
    -------------------------------------------------------------------------- */
 .layout {
   display: flex;
@@ -249,7 +249,19 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .theme-btn:hover { color: var(--text-strong); border-color: var(--text-muted); }
 
-/* Resultados de búsqueda */
+.lang-switch { margin-left: 8px; }
+.lang-switch a, .lang-switch .current {
+  display: inline-block;
+  padding: 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.lang-switch a { color: var(--text-muted); }
+.lang-switch a:hover { color: var(--text-strong); text-decoration: none; }
+.lang-switch .current { color: var(--accent); }
+
+/* Search results */
 .results { padding: 4px 12px 16px; }
 .result {
   display: block;
@@ -267,7 +279,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .results-empty { padding: 16px 20px; color: var(--text-muted); font-size: 14px; }
 
 /* --------------------------------------------------------------------------
-   Cabecera del contenido (breadcrumb + enlaces a GitHub)
+   Content header (breadcrumb + GitHub links)
    -------------------------------------------------------------------------- */
 .content-head {
   display: flex; justify-content: space-between; gap: 24px;
@@ -283,7 +295,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .head-links .small { display: block; font-size: 14px; }
 
 /* --------------------------------------------------------------------------
-   Contenido Markdown
+   Markdown content
    -------------------------------------------------------------------------- */
 .doc { max-width: 100%; overflow-wrap: break-word; }
 .doc > :first-child { margin-top: 0; }
@@ -417,8 +429,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .admonition-body a { color: inherit; text-decoration: underline; }
 
 /* --------------------------------------------------------------------------
-   Tiles de la portada (se escriben como HTML dentro del .md)
-   <div class="tiles"><a class="tile green" href="#/ruta">…</a></div>
+   Home page tiles (written as HTML inside the .md)
+   <div class="tiles"><a class="tile green" href="#/path">…</a></div>
    -------------------------------------------------------------------------- */
 .doc .tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 1.4rem 0; }
 .doc .tile {
@@ -439,7 +451,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .doc .tile.red  { background: var(--tile-red); }
 
 /* --------------------------------------------------------------------------
-   Paginación anterior / siguiente y pie
+   Previous / next pager and footer
    -------------------------------------------------------------------------- */
 .pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
 .pager:empty { display: none; }
@@ -455,7 +467,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .site-footer { margin-top: 2rem; color: var(--text-muted); font-size: 14px; }
 
 /* --------------------------------------------------------------------------
-   Móvil / tablet
+   Mobile / tablet
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .topbar {

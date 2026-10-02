@@ -1,40 +1,40 @@
-name: Reportar un error
-description: Algo no funciona como debería
+name: Report a bug
+description: Something doesn't work as it should
 labels: [bug]
 body:
   - type: textarea
-    id: que-pasa
+    id: what-happens
     attributes:
-      label: Qué ocurre
-      description: Describe el problema y qué esperabas que pasara.
+      label: What happens
+      description: Describe the problem and what you expected to happen.
     validations:
       required: true
   - type: textarea
-    id: pasos
+    id: steps
     attributes:
-      label: Cómo reproducirlo
-      description: Pasos concretos. Si es posible, incluye el `.md` o la estructura de carpetas que lo provoca.
+      label: How to reproduce it
+      description: Concrete steps. If possible, include the `.md` file or the folder structure that triggers it.
       placeholder: |
-        1. Crear docs/x/y.md con…
-        2. Abrir #/x/y
-        3. Ver…
+        1. Create docs/x/y.md with…
+        2. Open #/x/y
+        3. See…
     validations:
       required: true
   - type: input
-    id: navegador
+    id: browser
     attributes:
-      label: Navegador y versión
+      label: Browser and version
       placeholder: Firefox 130, Chrome 128, Safari 17…
     validations:
       required: true
   - type: input
     id: node
     attributes:
-      label: Versión de Node.js
-      description: Salida de `node -v`. Déjalo vacío si el problema aparece ya publicado.
+      label: Node.js version
+      description: Output of `node -v`. Leave empty if the problem already shows up on a published site.
   - type: textarea
-    id: consola
+    id: console
     attributes:
-      label: Errores de la consola del navegador
-      description: Abre las herramientas de desarrollo (F12 → Consola) y pega lo que aparezca.
+      label: Browser console errors
+      description: Open the developer tools (F12 → Console) and paste whatever appears.
       render: shell

@@ -1,10 +1,14 @@
 {
   "site": {
     "title": "folderdocs",
-    "subtitle": "Documentación en Markdown, sin build",
-    "footer": "folderdocs · Licencia MIT",
+    "subtitle": "Markdown documentation, no build step",
+    "footer": "folderdocs · MIT License",
     "version": "v1.0",
-    "lang": "es",
+    "lang": "en",
+    "languages": [
+      { "label": "EN", "href": "./" },
+      { "label": "ES", "href": "es/" }
+    ],
     "home": "index",
     "repo": "jrcesara7-bit/folderdocs",
     "branch": "main",

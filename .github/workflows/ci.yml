@@ -22,7 +22,7 @@ jobs:
       - run: npm test
 
   nav:
-    name: docs/nav.json está actualizado
+    name: nav.json files are up to date
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,9 +30,9 @@ jobs:
         with:
           node-version: 22
       - run: node tools/build-nav.mjs
-      - name: Comprobar que no hay cambios
+      - name: Check for changes
         run: |
-          if ! git diff --exit-code -- docs/nav.json; then
-            echo "::error file=docs/nav.json::El menú está desactualizado. Ejecuta 'npm run nav' y sube docs/nav.json."
+          if ! git diff --exit-code -- 'docs*/nav.json'; then
+            echo "::error::A menu is out of date. Run 'npm run nav' and commit the nav.json files."
             exit 1
           fi

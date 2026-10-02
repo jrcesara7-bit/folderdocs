@@ -1,25 +1,25 @@
-name: Proponer una mejora
-description: Una idea para la plantilla
+name: Suggest an improvement
+description: An idea for folderdocs
 labels: [enhancement]
 body:
   - type: markdown
     attributes:
       value: |
-        La plantilla busca seguir siendo pequeña y sin dependencias. Las propuestas que lo respeten se valoran mejor.
+        folderdocs aims to stay small and dependency-free. Proposals that respect that are easier to accept.
   - type: textarea
-    id: problema
+    id: problem
     attributes:
-      label: Qué problema quieres resolver
-      description: Describe la situación, no solo la solución.
+      label: What problem do you want to solve
+      description: Describe the situation, not only the solution.
     validations:
       required: true
   - type: textarea
-    id: propuesta
+    id: proposal
     attributes:
-      label: Qué propones
+      label: What do you propose
     validations:
       required: true
   - type: textarea
-    id: alternativas
+    id: alternatives
     attributes:
-      label: Alternativas que consideraste
+      label: Alternatives you considered

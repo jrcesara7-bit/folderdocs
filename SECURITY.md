@@ -1,19 +1,21 @@
-# Política de seguridad
+# Security policy
 
-## Reportar una vulnerabilidad
+*[Leer en español](.github/es/SECURITY.md)*
 
-No abras una incidencia pública. Usa el aviso privado de GitHub:
-**Security → Report a vulnerability** en este repositorio.
+## Reporting a vulnerability
 
-Intentaré responder en unos días. Esto es un proyecto mantenido por una sola persona, así que no hay plazos garantizados, pero se atienden con prioridad.
+Please don't open a public issue. Use GitHub's private advisory:
+**Security → Report a vulnerability** in this repository.
 
-## Qué se considera en alcance
+I'll try to reply within a few days. This is a project maintained by one person, so there are no guaranteed timelines, but reports are handled with priority.
 
-- Ejecución de código o inyección de HTML/JavaScript provocada por la plantilla en sí (`assets/js/app.js`, `tools/`).
-- Lectura de archivos fuera del proyecto en `tools/serve.mjs`.
+## What is in scope
 
-## Fuera de alcance
+- Code execution or HTML/JavaScript injection caused by the template itself (`assets/js/app.js`, `tools/`).
+- Reading files outside the project in `tools/serve.mjs`.
 
-- El HTML que escribes tú dentro de tus `.md` se inserta sin filtrar **por diseño** (lo necesitan los recuadros de portada). Publica solo contenido en el que confíes y revisa los cambios de colaboradores externos.
-- `tools/serve.mjs` es un servidor de **desarrollo**: no lo expongas a Internet.
-- Vulnerabilidades en `marked` o `highlight.js` (copiados en `assets/vendor/`): repórtalas a esos proyectos. Si afectan a la plantilla, avísame para actualizar la copia incluida.
+## Out of scope
+
+- The HTML you write inside your own `.md` files is inserted unfiltered **by design** (the home page tiles need it). Only publish content you trust, and review changes from outside contributors.
+- `tools/serve.mjs` is a **development** server: don't expose it to the Internet.
+- Vulnerabilities in `marked` or `highlight.js` (copied into `assets/vendor/`): report them to those projects. If they affect folderdocs, let me know so I can update the bundled copy.

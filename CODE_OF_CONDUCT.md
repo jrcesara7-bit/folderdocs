@@ -1,33 +1,35 @@
-# Código de conducta
+# Code of conduct
 
-## Nuestro compromiso
+*[Leer en español](.github/es/CODE_OF_CONDUCT.md)*
 
-Queremos que participar en este proyecto sea una experiencia respetuosa y libre de acoso para todas las personas, sin importar su edad, origen, identidad, nivel de experiencia, nacionalidad o aspecto.
+## Our pledge
 
-## Comportamiento esperado
+We want taking part in this project to be a respectful, harassment-free experience for everyone, regardless of age, background, identity, level of experience, nationality or appearance.
 
-- Ser amable y paciente, sobre todo con quien está empezando.
-- Criticar el código y las ideas, no a las personas.
-- Aceptar con buena disposición las observaciones constructivas.
-- Asumir buena fe antes de asumir mala intención.
+## Expected behavior
 
-## Comportamiento inaceptable
+- Be kind and patient, especially with people who are just starting out.
+- Criticize code and ideas, not people.
+- Accept constructive feedback gracefully.
+- Assume good faith before assuming bad intent.
 
-- Insultos, burlas, lenguaje o imágenes sexualizadas, y acoso de cualquier tipo.
-- Ataques personales o políticos.
-- Publicar información privada de otras personas sin su permiso.
-- Cualquier conducta que razonablemente se consideraría inapropiada en un entorno profesional.
+## Unacceptable behavior
 
-## Aplicación
+- Insults, mockery, sexualized language or imagery, and harassment of any kind.
+- Personal or political attacks.
+- Publishing other people's private information without their permission.
+- Any conduct that would reasonably be considered inappropriate in a professional setting.
 
-Quien mantiene el proyecto puede editar o eliminar comentarios, incidencias y contribuciones que no respeten este código, y bloquear temporal o permanentemente a quien lo incumpla de forma reiterada.
+## Enforcement
 
-Para reportar una conducta inaceptable, escribe a [@jrcesara7-bit](https://github.com/jrcesara7-bit) a través de su perfil de GitHub o usa la función de reportar de la propia plataforma. Los reportes se tratarán con confidencialidad.
+The maintainer may edit or remove comments, issues and contributions that don't follow this code, and temporarily or permanently ban anyone who repeatedly breaks it.
 
-## Alcance
+To report unacceptable behavior, contact [@jrcesara7-bit](https://github.com/jrcesara7-bit) through their GitHub profile, or use the platform's own report feature. Reports are treated confidentially.
 
-Este código se aplica a todos los espacios del proyecto: incidencias, solicitudes de cambio, discusiones y comentarios.
+## Scope
+
+This code applies to every project space: issues, pull requests, discussions and comments.
 
 ---
 
-Adaptado del [Contributor Covenant](https://www.contributor-covenant.org), versión 2.1.
+Adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.1.

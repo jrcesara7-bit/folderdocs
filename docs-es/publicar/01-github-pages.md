@@ -1,6 +1,6 @@
 # GitHub Pages
 
-El repositorio incluye el flujo `.github/workflows/pages.yml`, que regenera el menú y publica el sitio en cada push a `main`.
+El repositorio incluye el flujo `.github/workflows/pages.yml`, que construye el sitio y lo publica en cada push a `main`.
 
 ## Activarlo
 
@@ -26,7 +26,7 @@ En **Settings → Pages → Custom domain** escribe tu dominio y crea el registr
 
 ## Qué se publica
 
-El flujo copia solo lo necesario: `index.html`, `assets/` y `docs/`. Las herramientas, las pruebas y el resto del repositorio no se publican.
+El flujo ejecuta `npm run build`, que regenera todos los menús y copia solo lo necesario a `_site/`: `index.html`, `assets/`, cada carpeta de documentación y la página de entrada de cada idioma. Las herramientas, las pruebas y el resto del repositorio no se publican.
 
 > [!TIP]
-> Si algo falla, abre la pestaña **Actions** y revisa el registro del flujo «Publicar en GitHub Pages».
+> Si algo falla, abre la pestaña **Actions** y revisa el registro del flujo «Deploy to GitHub Pages».

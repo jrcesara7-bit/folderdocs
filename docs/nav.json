@@ -1,86 +1,86 @@
 [
   {
-    "title": "Empezar",
+    "title": "Get started",
     "items": [
       {
-        "title": "Instalación",
-        "path": "empezar/01-instalacion"
+        "title": "Installation",
+        "path": "get-started/01-installation"
       },
       {
-        "title": "Estructura del proyecto",
-        "path": "empezar/02-estructura-del-proyecto"
+        "title": "Project structure",
+        "path": "get-started/02-project-structure"
       },
       {
-        "title": "Tu primera página",
-        "path": "empezar/03-tu-primera-pagina"
+        "title": "Your first page",
+        "path": "get-started/03-first-page"
       }
     ]
   },
   {
-    "title": "Guía",
+    "title": "Guide",
     "items": [
       {
-        "title": "Organizar el contenido",
-        "path": "guia/01-organizar-contenido"
+        "title": "Organize content",
+        "path": "guide/01-organize-content"
       },
       {
-        "title": "Sintaxis Markdown",
-        "path": "guia/02-sintaxis-markdown"
+        "title": "Markdown syntax",
+        "path": "guide/02-markdown-syntax"
       },
       {
-        "title": "Portada y recuadros",
-        "path": "guia/03-portada-y-recuadros"
+        "title": "Home page and tiles",
+        "path": "guide/03-home-page-and-tiles"
       },
       {
-        "title": "Enlaces e imágenes",
-        "path": "guia/04-enlaces-e-imagenes"
+        "title": "Links and images",
+        "path": "guide/04-links-and-images"
       }
     ]
   },
   {
-    "title": "Personalizar",
+    "title": "Customize",
     "items": [
       {
-        "title": "Configuración",
-        "path": "personalizar/01-configuracion"
+        "title": "Configuration",
+        "path": "customize/01-configuration"
       },
       {
-        "title": "Tema y colores",
-        "path": "personalizar/02-tema-y-colores"
+        "title": "Theme and colors",
+        "path": "customize/02-theme-and-colors"
       },
       {
-        "title": "Idioma",
-        "path": "personalizar/03-idioma"
+        "title": "Languages",
+        "path": "customize/03-languages"
       }
     ]
   },
   {
-    "title": "Publicar",
+    "title": "Publish",
     "items": [
       {
         "title": "GitHub Pages",
-        "path": "publicar/01-github-pages"
+        "path": "publish/01-github-pages"
       },
       {
-        "title": "Otros hosts",
-        "path": "publicar/02-otros-hosts"
+        "title": "Other hosts",
+        "path": "publish/02-other-hosts"
       },
       {
-        "title": "SEO y limitaciones",
-        "path": "publicar/03-seo-y-limitaciones"
+        "title": "SEO and limitations",
+        "path": "publish/03-seo-and-limitations"
       }
     ]
   },
   {
-    "title": "Acerca de",
+    "title": "About",
     "items": [
       {
-        "title": "Por qué esta plantilla",
-        "path": "acerca/01-por-que-esta-plantilla"
+        "title": "Why this template",
+        "path": "about/01-why-this-template"
       },
       {
-        "title": "Preguntas frecuentes",
-        "path": "acerca/02-preguntas-frecuentes"
+        "title": "Frequently asked questions",
+        "path": "about/02-faq"
       }
     ]
   }

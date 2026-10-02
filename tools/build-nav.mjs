@@ -1,18 +1,21 @@
 #!/usr/bin/env node
-/* Genera docs/nav.json escaneando las carpetas y archivos .md de docs/.
+/* Generates docs/nav.json by scanning the folders and .md files inside docs/.
  *
- * Reglas:
- *  - Carpeta de primer nivel      → sección del menú.
- *  - Subcarpeta                   → grupo desplegable dentro de la sección.
- *  - Archivo .md                  → página.
- *  - carpeta/index.md             → es la página del propio grupo (no se repite como hijo).
- *  - docs/index.md                → portada (no aparece en el menú).
- *  - Archivos sueltos en docs/    → sección "General" (configurable con site.rootSection).
- *  - Nombres que empiezan con _ o . se ignoran (salvo _meta.json de cada carpeta).
+ * Rules:
+ *  - Top-level folder          → menu section.
+ *  - Subfolder                 → collapsible group inside the section.
+ *  - .md file                  → page.
+ *  - folder/index.md           → the folder's own page (not repeated as a child).
+ *  - docs/index.md             → home page (not in the menu).
+ *  - Loose files in docs/      → "General" section (configurable with site.rootSection).
+ *  - Names starting with _ or . are ignored (except each folder's _meta.json).
  *
- * Títulos:  front matter `title:` → primer `# Encabezado` → nombre del archivo/carpeta.
- * Orden:    `order:` (front matter o _meta.json) → prefijo numérico (01-nombre) → alfabético.
- * Opcional: <carpeta>/_meta.json  →  { "title": "Acerca de", "order": 1 }
+ * Titles:   front matter `title:` → first `# Heading` → file/folder name.
+ * Order:    `order:` (front matter or _meta.json) → numeric prefix (01-name) → alphabetical.
+ * Optional: <folder>/_meta.json  →  { "title": "About", "order": 1 }
+ *
+ * Every folder named `docs` or `docs-*` at the project root is treated as one language
+ * of the site, and gets its own nav.json.
  */
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -79,7 +82,7 @@ async function readJsonIfExists(file) {
   try { return JSON.parse(await readFile(file, 'utf8')); } catch { return {}; }
 }
 
-/** Devuelve { title, order, path?, items[] } para una carpeta, o null si queda vacía. */
+/** Returns { title, order, path?, items[] } for a folder, or null if it ends up empty. */
 async function readGroup(dir, rel, { isSection }) {
   const entries = (await readdir(dir, { withFileTypes: true }))
     .filter((e) => !e.name.startsWith('_') && !e.name.startsWith('.'));
@@ -148,13 +151,33 @@ export async function writeNav(docsDir = DOCS) {
   const out = path.join(docsDir, 'nav.json');
   const json = JSON.stringify(nav, null, 2) + '\n';
   let previous = '';
-  try { previous = await readFile(out, 'utf8'); } catch { /* primera vez */ }
+  try { previous = await readFile(out, 'utf8'); } catch { /* first run */ }
   if (previous !== json) await writeFile(out, json);
   return { nav, changed: previous !== json };
 }
 
+/** Absolute paths of the project's documentation folders: `docs` and `docs-*`. */
+export async function findDocsDirs(root = ROOT) {
+  const entries = await readdir(root, { withFileTypes: true });
+  return entries
+    .filter((e) => e.isDirectory() && /^docs(-[\w-]+)?$/.test(e.name))
+    .map((e) => path.join(root, e.name))
+    .sort();
+}
+
+const countPages = (items) => items.reduce((n, i) => n + (i.path ? 1 : 0) + (i.items ? countPages(i.items) : 0), 0);
+
+export async function writeAllNavs(root = ROOT) {
+  const results = [];
+  for (const dir of await findDocsDirs(root)) {
+    const { nav, changed } = await writeNav(dir);
+    results.push({ dir: path.relative(root, dir), sections: nav.length, pages: countPages(nav.flatMap((s) => s.items)), changed });
+  }
+  return results;
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const { nav, changed } = await writeNav();
-  const count = (items) => items.reduce((n, i) => n + (i.path ? 1 : 0) + (i.items ? count(i.items) : 0), 0);
-  console.log(`docs/nav.json ${changed ? 'actualizado' : 'sin cambios'}: ${nav.length} secciones, ${count(nav.flatMap((s) => s.items))} páginas`);
+  for (const r of await writeAllNavs()) {
+    console.log(`${r.dir}/nav.json ${r.changed ? 'updated' : 'unchanged'}: ${r.sections} sections, ${r.pages} pages`);
+  }
 }

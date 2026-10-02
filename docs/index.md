@@ -1,28 +1,28 @@
 # folderdocs
 
 > [!NOTE]
-> Esta página es la demo de la plantilla, y a la vez su documentación. Todo lo que ves está escrito en archivos `.md` dentro de `docs/`: no hay HTML que mantener ni paso de compilación.
+> This page is the template's demo and its documentation at the same time. Everything you see is written in `.md` files inside `docs/`: there is no HTML to maintain and no build step.
 
-Escribes Markdown, creas carpetas y el sitio se arma solo: menú lateral, buscador, migas de pan, tema oscuro y claro, avisos y resaltado de código. Funciona con cualquier hosting estático.
+You write Markdown, create folders, and the site assembles itself: sidebar menu, search, breadcrumbs, light and dark themes, admonitions and syntax highlighting. It works on any static hosting.
 
-Elige el recuadro que mejor describa tu situación:
+Pick the tile that best describes your situation:
 
 <div class="tiles">
-  <a class="tile green" href="#/empezar/01-instalacion">Quiero usar la plantilla.<br><strong>Instalar y ver el sitio en local.</strong></a>
-  <a class="tile teal" href="#/guia/01-organizar-contenido">Quiero escribir contenido.<br><strong>Carpetas, menú y Markdown.</strong></a>
-  <a class="tile blue" href="#/personalizar/01-configuracion">Quiero que se vea como mi proyecto.<br><strong>Nombre, logo, colores e idioma.</strong></a>
-  <a class="tile red" href="#/publicar/01-github-pages">Quiero publicarlo.<br><strong>GitHub Pages y otros hosts.</strong></a>
+  <a class="tile green" href="#/get-started/01-installation">I want to use the template.<br><strong>Install it and run it locally.</strong></a>
+  <a class="tile teal" href="#/guide/01-organize-content">I want to write content.<br><strong>Folders, menu and Markdown.</strong></a>
+  <a class="tile blue" href="#/customize/01-configuration">I want it to look like my project.<br><strong>Name, logo, colors and language.</strong></a>
+  <a class="tile red" href="#/publish/01-github-pages">I want to publish it.<br><strong>GitHub Pages and other hosts.</strong></a>
 </div>
 
-## Qué incluye
+## What's included
 
-- **Menú automático**: cada carpeta es una sección y cada `.md` una página. Sin listas que mantener.
-- **Buscador** en el menú lateral (atajo: `/`), sin servicios externos.
-- **Tema oscuro y claro**, recordado entre visitas, y diseño adaptable a móvil.
-- **Avisos**, tablas, código con resaltado y botón de copiar, enlaces relativos entre páginas.
-- **Interfaz en español e inglés**, ampliable a otros idiomas.
-- **Cero dependencias que instalar**: las dos librerías que usa vienen incluidas en el repositorio.
+- **Automatic menu**: each folder is a section and each `.md` a page. No lists to maintain.
+- **Search** in the sidebar (shortcut: `/`), with no external services.
+- **Light and dark themes**, remembered between visits, and a mobile-friendly layout.
+- **Admonitions**, tables, highlighted code with a copy button, and relative links between pages.
+- **Multilingual**: interface in English and Spanish, and one site per language with a language switcher.
+- **Nothing to install**: the two libraries it uses ship inside the repository.
 
-## Antes de elegirla
+## Before you choose it
 
-La plantilla pinta el contenido en el navegador. Es cómoda y rápida de mantener, pero **cada página no se indexa por separado en buscadores**. Lee [SEO y limitaciones](publicar/03-seo-y-limitaciones.md) para saber si encaja con tu caso, y la [comparación con otras herramientas](acerca/01-por-que-esta-plantilla.md).
+The template renders content in the browser. That makes it quick and pleasant to maintain, but **each page is not indexed separately by search engines**. Read [SEO and limitations](publish/03-seo-and-limitations.md) to see whether it fits your case, and the [comparison with other tools](about/01-why-this-template.md).

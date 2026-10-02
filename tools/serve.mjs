@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-/* Servidor local de desarrollo: sirve el sitio y regenera docs/nav.json en cada
- * petición, así basta con crear carpetas/.md y recargar el navegador.
- *   node tools/serve.mjs [puerto]      (por defecto 8000)
+/* Local development server: serves the site and regenerates each docs nav.json on
+ * every request, so creating folders/.md files and reloading the browser is enough.
+ *   node tools/serve.mjs [port]      (default 8000)
  */
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
@@ -25,16 +25,17 @@ createServer(async (req, res) => {
     let pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
     if (pathname.endsWith('/')) pathname += 'index.html';
     const file = path.join(ROOT, pathname);
-    if (file !== ROOT && !file.startsWith(ROOT + path.sep)) throw Object.assign(new Error('fuera de la raíz'), { code: 'EACCES' });
+    if (file !== ROOT && !file.startsWith(ROOT + path.sep)) throw Object.assign(new Error('outside the project root'), { code: 'EACCES' });
 
-    if (pathname === '/docs/nav.json') await writeNav();
+    const navDir = pathname.match(/^\/(docs(?:-[\w-]+)?)\/nav\.json$/);
+    if (navDir) await writeNav(path.join(ROOT, navDir[1]));
 
-    if (!(await stat(file)).isFile()) throw Object.assign(new Error('no es archivo'), { code: 'ENOENT' });
+    if (!(await stat(file)).isFile()) throw Object.assign(new Error('not a file'), { code: 'ENOENT' });
     res.writeHead(200, { 'Content-Type': TYPES[path.extname(file).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
     res.end(await readFile(file));
   } catch (err) {
     const code = err.code === 'EACCES' ? 403 : err.code === 'ENOENT' ? 404 : 500;
     res.writeHead(code, { 'Content-Type': 'text/plain; charset=utf-8' });
-    res.end(code === 404 ? 'No encontrado' : String(err.message));
+    res.end(code === 404 ? 'Not found' : String(err.message));
   }
-}).listen(PORT, () => console.log(`Documentación en http://localhost:${PORT}  (Ctrl+C para salir)`));
+}).listen(PORT, () => console.log(`Docs at http://localhost:${PORT}  (Ctrl+C to quit)`));

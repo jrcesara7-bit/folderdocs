@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Preguntas de uso
+  - name: Usage questions
     url: https://github.com/jrcesara7-bit/folderdocs/discussions
-    about: Para dudas de uso, usa Discussions en lugar de abrir una incidencia.
+    about: For questions about using folderdocs, use Discussions instead of opening an issue.

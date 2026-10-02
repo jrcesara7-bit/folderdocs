@@ -1,17 +1,17 @@
-## Qué cambia
+## What changes
 
-<!-- Describe el cambio en una o dos frases y por qué hace falta. -->
+<!-- Describe the change in one or two sentences, and why it is needed. -->
 
-## Tipo de cambio
+## Type of change
 
-- [ ] Corrección de un error
-- [ ] Funcionalidad nueva
-- [ ] Documentación o contenido de la demo
-- [ ] Otro: 
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Documentation or demo content
+- [ ] Other:
 
-## Lista de comprobación
+## Checklist
 
-- [ ] `npm test` pasa
-- [ ] Si toqué `docs/`, ejecuté `npm run nav` y subí `docs/nav.json`
-- [ ] Probé el cambio en el navegador con `npm run dev` (adjunta una captura si es visual)
-- [ ] Actualicé `README.md` / `CHANGELOG.md` si corresponde
+- [ ] `npm test` passes
+- [ ] If I touched `docs/` or `docs-es/`, I ran `npm run nav` and committed the `nav.json` files
+- [ ] I tried the change in the browser with `npm run dev` (attach a screenshot if it is visual)
+- [ ] I updated `README.md` / `CHANGELOG.md` if needed

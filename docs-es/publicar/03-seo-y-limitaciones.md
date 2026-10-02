@@ -32,6 +32,6 @@ Si necesitas que **cada página** salga en Google (documentación pública que c
 
 - Requiere JavaScript activado.
 - La portada (`index.md`) no entra en el buscador.
-- Sin versionado de documentación ni selector de idioma (ver [Idioma](../personalizar/03-idioma.md)).
+- Sin versionado de documentación. Los idiomas funcionan como un sitio por idioma (ver [Idioma](../personalizar/03-idioma.md)).
 - El buscador es de texto simple: no hace coincidencias aproximadas ni ordena por relevancia semántica.
 - El HTML de los `.md` no se filtra: no es apto para recibir contenido de usuarios desconocidos.

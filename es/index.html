@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es" data-theme="dark" data-docs="../docs-es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>folderdocs: documentación en Markdown sin build</title>
+  <meta name="description" content="folderdocs es una plantilla de documentación estática en Markdown: sin build ni dependencias, menú automático a partir de carpetas, buscador y modo oscuro/claro. Lista para GitHub Pages.">
+  <meta name="theme-color" content="#25282c">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+
+  <!-- Al publicar tu sitio, cambia estas URL por las de tu dominio -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="folderdocs: documentación en Markdown sin build">
+  <meta property="og:description" content="Escribe archivos .md y obtén un sitio de documentación con menú automático, buscador y tema oscuro/claro. Sin build.">
+  <meta property="og:url" content="https://jrcesara7-bit.github.io/folderdocs/es/">
+  <meta property="og:image" content="https://jrcesara7-bit.github.io/folderdocs/assets/img/social-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="../assets/css/theme.css">
+  <script>
+    // Aplica el tema guardado antes de pintar para evitar parpadeo.
+    try { var t = localStorage.getItem('docs-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn" id="menu-toggle" aria-label="Abrir menú">☰</button>
+    <a class="topbar-title" href="#/" id="topbar-title">Documentación</a>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <a class="brand" href="#/" id="brand"></a>
+        <div class="search">
+          <input id="search" type="search" placeholder="Buscar en la documentación" autocomplete="off" aria-label="Buscar">
+        </div>
+      </div>
+      <div class="sidebar-body">
+        <nav id="nav" aria-label="Contenido"></nav>
+        <div id="results" class="results" hidden></div>
+      </div>
+      <div class="sidebar-foot">
+        <span><span id="foot-label"></span> <span id="lang-switch" class="lang-switch"></span></span>
+        <button class="theme-btn" id="theme-toggle" aria-label="Cambiar tema">☾ / ☀</button>
+      </div>
+    </aside>
+
+    <main class="content" id="content">
+      <div class="content-head">
+        <div>
+          <div class="site-subtitle" id="site-subtitle"></div>
+          <ol class="breadcrumb" id="breadcrumb"></ol>
+        </div>
+        <div class="head-links" id="head-links"></div>
+      </div>
+      <article class="doc" id="doc" aria-live="polite"><noscript>Esta documentación necesita JavaScript para mostrar el contenido.</noscript></article>
+      <footer class="pager" id="pager"></footer>
+      <div class="site-footer" id="site-footer"></div>
+    </main>
+  </div>
+  <div class="backdrop" id="backdrop"></div>
+
+  <script src="../assets/vendor/marked.umd.js"></script>
+  <script src="../assets/vendor/highlight.min.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

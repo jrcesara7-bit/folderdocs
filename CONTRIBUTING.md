@@ -1,53 +1,59 @@
-# Contribuir
+# Contributing
 
-Gracias por querer mejorar esta plantilla. Las contribuciones pequeñas y enfocadas son las más fáciles de revisar.
+Thanks for wanting to improve folderdocs. Small, focused contributions are the easiest to review.
 
-## Antes de empezar
+*[Leer en español](.github/es/CONTRIBUTING.md)*
 
-- Para dudas de uso, usa [Discussions](https://github.com/jrcesara7-bit/folderdocs/discussions).
-- Para errores y propuestas, abre una [incidencia](https://github.com/jrcesara7-bit/folderdocs/issues/new/choose) y describe el caso. Si el cambio es grande, conviene comentarlo antes de escribir código.
-- Es un proyecto pequeño y mantenido en el tiempo libre: puede tardar en responder.
+## Before you start
 
-## Principios del proyecto
+- For usage questions, use [Discussions](https://github.com/jrcesara7-bit/folderdocs/discussions).
+- For bugs and proposals, open an [issue](https://github.com/jrcesara7-bit/folderdocs/issues/new/choose) and describe the case. If the change is big, talk about it first, before writing code.
+- This is a small project maintained in spare time: replies may take a while.
 
-Una propuesta encaja mejor si respeta esto:
+## Project principles
 
-1. **Sin paso de compilación** para quien usa la plantilla.
-2. **Sin dependencias nuevas** en tiempo de ejecución. `marked` y `highlight.js` son las únicas, y viven en `assets/vendor/`.
-3. **Pocas piezas propias**: `app.js`, `theme.css` y `build-nav.mjs` deben poder leerse enteros.
-4. **Los colores van en variables** de `theme.css`, para ambos temas.
+A proposal fits best if it respects these:
 
-## Preparar el entorno
+1. **No build step** for people who use the template.
+2. **No new runtime dependencies.** `marked` and `highlight.js` are the only ones, and they live in `assets/vendor/`.
+3. **Few moving parts of its own**: `app.js`, `theme.css`, and the scripts in `tools/` should be readable end to end.
+4. **Colors go in variables** in `theme.css`, for both themes.
 
-Necesitas Node.js 18 o superior.
+## Set up your environment
+
+You need Node.js 18 or later.
 
 ```bash
-git clone https://github.com/TU-USUARIO/folderdocs.git
+git clone https://github.com/YOUR-USER/folderdocs.git
 cd folderdocs
 npm run dev        # http://localhost:8000
 npm test
 ```
 
-## Enviar un cambio
+## Submit a change
 
-1. Crea una rama a partir de `main`: `git checkout -b mi-cambio`.
-2. Haz el cambio, con pruebas si toca `tools/build-nav.mjs`.
-3. Si modificaste `docs/`, ejecuta `npm run nav` y sube `docs/nav.json`.
-4. Prueba en el navegador, en tema oscuro y claro, y en ancho móvil si el cambio es visual.
-5. Añade una línea en `CHANGELOG.md`, bajo `[Sin publicar]`.
-6. Abre la solicitud de cambio y rellena la plantilla.
+1. Create a branch from `main`: `git checkout -b my-change`.
+2. Make the change, with tests if it touches `tools/`.
+3. If you changed `docs/` or `docs-es/`, run `npm run nav` and commit the `nav.json` files.
+4. Try it in the browser, in dark and light themes, and at mobile width if the change is visual.
+5. Add a line to `CHANGELOG.md` under `[Unreleased]`.
+6. Open the pull request and fill in the template.
 
-## Estilo
+## Documentation in two languages
 
-- JavaScript sin transpilar ni dependencias: ES modules en `tools/` y un IIFE en `assets/js/app.js`.
-- Respeta `.editorconfig` (UTF-8, LF, 2 espacios).
-- Comentarios para explicar el *porqué*, no el *qué*.
-- Mensajes de commit en imperativo y concretos: «Corrige el orden de carpetas con prefijo numérico».
+English (`docs/`) is the main version and Spanish (`docs-es/`) is its translation. If you change a page, update the other language too, or mention in the pull request that the translation is pending.
 
-## Dependencias incluidas
+## Style
 
-Para actualizar `marked` o `highlight.js`, reemplaza el archivo de `assets/vendor/` por la versión nueva desde su paquete oficial, comprueba que la demo sigue funcionando y anota la versión en el commit.
+- Plain JavaScript, no transpilation and no dependencies: ES modules in `tools/` and an IIFE in `assets/js/app.js`.
+- Follow `.editorconfig` (UTF-8, LF, 2 spaces).
+- Comments explain *why*, not *what*.
+- Commit messages in the imperative and specific: "Fix folder order with numeric prefixes".
 
-## Licencia
+## Bundled dependencies
 
-Al contribuir aceptas que tu aportación se publique bajo la licencia [MIT](LICENSE) del proyecto.
+To update `marked` or `highlight.js`, replace the file in `assets/vendor/` with the new version from its official package, check that the demo still works, and note the version in the commit.
+
+## License
+
+By contributing you agree that your work is published under the project's [MIT](LICENSE) license.

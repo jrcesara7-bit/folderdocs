@@ -32,6 +32,10 @@ Sí. En pantallas estrechas el menú pasa a un panel lateral que se abre con el 
 
 Usa la función de imprimir del navegador: la hoja de estilos oculta el menú y los controles al imprimir. Se imprime la página que estés viendo.
 
+## ¿Puedo tener la documentación en varios idiomas?
+
+Sí, como un sitio por idioma con selector de idioma. Ver [Idioma](../personalizar/03-idioma.md).
+
 ## ¿Dónde reporto un problema o propongo una mejora?
 
 En las [incidencias del repositorio](https://github.com/jrcesara7-bit/folderdocs/issues). La guía para contribuir está en `CONTRIBUTING.md`.

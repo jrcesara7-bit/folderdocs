@@ -2,116 +2,120 @@
 
 # folderdocs
 
-**Plantilla de documentación en Markdown. Tus carpetas son el menú: escribe archivos y obtén un sitio con buscador y tema oscuro/claro. Sin build y sin dependencias que instalar.**
+**Documentation template for Markdown. Your folders are the menu: write `.md` files and get a site with search and light/dark themes. No build step, nothing to install.**
 
 [![CI](https://github.com/jrcesara7-bit/folderdocs/actions/workflows/ci.yml/badge.svg)](https://github.com/jrcesara7-bit/folderdocs/actions/workflows/ci.yml)
-[![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-blue.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Node 18+](https://img.shields.io/badge/node-%E2%89%A518-339933)
 
-[**Ver demo**](https://jrcesara7-bit.github.io/folderdocs/) · [Documentación](https://jrcesara7-bit.github.io/folderdocs/#/empezar/01-instalacion) · [Reportar un error](https://github.com/jrcesara7-bit/folderdocs/issues/new/choose) · [English](README.en.md)
+[**Live demo**](https://jrcesara7-bit.github.io/folderdocs/) · [Documentation](https://jrcesara7-bit.github.io/folderdocs/#/get-started/01-installation) · [Report a bug](https://github.com/jrcesara7-bit/folderdocs/issues/new/choose) · [Español](README.es.md)
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="docs/img/preview-light.png">
-  <img alt="Captura de la plantilla: menú lateral con secciones, buscador y recuadros de colores en la portada" src="docs/img/preview-dark.png" width="900">
+  <img alt="Screenshot of folderdocs: sidebar with sections, search box and coloured tiles on the home page" src="docs/img/preview-dark.png" width="900">
 </picture>
 
 </div>
 
-## Para qué sirve
+## What it is
 
-Es una plantilla para tener documentación presentable (de un proyecto, un producto, un equipo o tus apuntes) escribiendo solo `.md`. Creas una carpeta, añades un archivo, recargas: aparece en el menú. No hay lista que mantener, ni framework que aprender, ni paso de compilación.
+A template for presentable documentation (for a project, a product, a team or your own notes) where you only write `.md` files. Create a folder, add a file, reload: it shows up in the menu. There is no list to maintain, no framework to learn and no build step.
 
-La estética se inspira en la documentación de Godot y en el tema Read the Docs: menú lateral con secciones plegables, migas de pan, avisos de colores y paginación anterior/siguiente.
+The look is inspired by the Godot documentation and the Read the Docs theme: collapsible sidebar sections, breadcrumbs, coloured admonitions and previous/next pagination.
 
-## Características
+## Features
 
-- **Menú automático**: cada carpeta es una sección, cada subcarpeta un grupo y cada `.md` una página. Títulos desde el front matter o el primer `# H1`; orden por `order`, prefijo numérico (`01-`) o alfabético.
-- **Buscador** de texto en el menú lateral, sin servicios externos (atajo: `/`).
-- **Tema oscuro y claro**, recordado entre visitas. Los colores son variables CSS.
-- **Markdown ampliado**: tablas, listas de tareas, avisos como los de GitHub (`> [!NOTE]`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION`), código resaltado con botón de copiar.
-- **Enlaces e imágenes relativos** entre archivos `.md`, que también funcionan al verlos en GitHub.
-- **Recuadros de colores** para la portada, escritos como HTML dentro del `.md`.
-- **Adaptable a móvil** y con hoja de estilos de impresión.
-- **Interfaz en español e inglés** (`site.lang`), ampliable.
-- **Enlace «Editar en GitHub»** en cada página.
-- **Sin dependencias que instalar**: `marked` y `highlight.js` vienen incluidos en `assets/vendor/`. Node solo hace falta en local, para el servidor de desarrollo y el generador de menú.
-- **Flujos de GitHub Actions** listos: pruebas, comprobación del menú y publicación en GitHub Pages.
+- **Automatic menu**: each folder is a section, each subfolder a group, each `.md` a page. Titles come from front matter or the first `# H1`; order from `order`, a numeric prefix (`01-`) or alphabetical.
+- **Text search** in the sidebar, no external service (shortcut: `/`).
+- **Light and dark themes**, remembered between visits. Colours are CSS variables.
+- **Extended Markdown**: tables, task lists, GitHub-style admonitions (`> [!NOTE]`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION`), highlighted code with a copy button.
+- **Relative links and images** between `.md` files, which also work when browsing them on GitHub.
+- **Coloured tiles** for the home page, written as HTML inside the `.md`.
+- **Multilingual**: interface in English and Spanish, and one documentation folder per language with a language switcher (this repo's demo is published in both).
+- **Responsive**, with a print stylesheet.
+- **«Edit on GitHub»** link on every page.
+- **Nothing to install**: `marked` and `highlight.js` ship in `assets/vendor/`. Node is only needed locally, for the dev server and the build scripts.
+- **GitHub Actions** included: tests, menu check and GitHub Pages deployment.
 
-## Inicio rápido
+## Quick start
 
-Necesitas [Node.js](https://nodejs.org) 18 o superior.
+You need [Node.js](https://nodejs.org) 18 or later.
 
 ```bash
-# 1. Usa la plantilla (botón "Use this template" en GitHub) o clónala
-git clone https://github.com/jrcesara7-bit/folderdocs.git mi-documentacion
-cd mi-documentacion
+# 1. Use the template ("Use this template" button on GitHub) or clone it
+git clone https://github.com/jrcesara7-bit/folderdocs.git my-docs
+cd my-docs
 
-# 2. Arranca el servidor local (regenera el menú en cada recarga)
+# 2. Start the local server (it rebuilds the menu on every reload)
 npm run dev
 ```
 
-Abre <http://localhost:8000>. Después:
+Open <http://localhost:8000>. Then:
 
-1. Crea `docs/guia/hola.md` con `# Hola` y un párrafo.
-2. Recarga el navegador: aparece en el menú, bajo **Guía**.
-3. Edita `docs/config.json` con el nombre y el repositorio de tu proyecto.
+1. Create `docs/guide/hello.md` with `# Hello` and a paragraph.
+2. Reload the browser: it appears in the menu, under **Guide**.
+3. Edit `docs/config.json` with your project's name and repository.
 
-> No abras `index.html` con doble clic: el navegador bloquea la lectura de archivos locales. Usa `npm run dev`.
+> Don't open `index.html` by double-clicking it: browsers block local file access. Use `npm run dev`.
 
-## Cómo se organiza el contenido
+Only one language? Delete `docs-es/` and `es/`, and remove `languages` from `docs/config.json`.
+
+## How content is organised
 
 ```text
 docs/
-├── index.md                    portada (no sale en el menú)
-├── config.json                 nombre, idioma, repositorio…
-├── guia/                       → sección «Guía»
-│   ├── _meta.json              { "title": "Guía", "order": 1 }   (opcional)
-│   ├── instalacion.md          → página
-│   └── avanzado/               → grupo desplegable
-│       ├── index.md            → página del propio grupo
-│       └── 01-plugins.md       → el prefijo numérico fija el orden
-└── _borrador/                  lo que empieza con _ o . se ignora
+├── index.md                    home page (not in the menu)
+├── config.json                 name, language, repository…
+├── guide/                      → section "Guide"
+│   ├── _meta.json              { "title": "Guide", "order": 1 }   (optional)
+│   ├── install.md              → page
+│   └── advanced/               → collapsible group
+│       ├── index.md            → the group's own page
+│       └── 01-plugins.md       → numeric prefix sets the order
+└── _drafts/                    anything starting with _ or . is ignored
 ```
 
-El menú se guarda en `docs/nav.json` (generado; no se edita a mano). Detalles en la [guía de organización](https://jrcesara7-bit.github.io/folderdocs/#/guia/01-organizar-contenido).
+The menu is stored in `docs/nav.json` (generated; don't edit it by hand). Details in the [organisation guide](https://jrcesara7-bit.github.io/folderdocs/#/guide/01-organize-content).
 
-## Personalización
+## Customisation
 
-| Qué | Dónde |
+| What | Where |
 | --- | --- |
-| Nombre, subtítulo, pie, idioma, repositorio, logo | `docs/config.json` |
-| Colores (tema oscuro y claro), tipografía, ancho | variables al inicio de `assets/css/theme.css` |
-| Título, descripción y vista previa para redes | `index.html` y `assets/img/social-preview.png` |
-| Textos de la interfaz o un idioma nuevo | objeto `I18N` en `assets/js/app.js` |
+| Name, subtitle, footer, language, repository, logo | `docs/config.json` |
+| Colours (dark and light), typography, width | variables at the top of `assets/css/theme.css` |
+| Title, description and social preview | `index.html` and `assets/img/social-preview.png` |
+| Interface strings or a new interface language | `I18N` object in `assets/js/app.js` |
+| A site in several languages | [Languages guide](https://jrcesara7-bit.github.io/folderdocs/#/customize/03-languages) |
 
-## Publicar
+## Publishing
 
-El flujo `.github/workflows/pages.yml` publica el sitio en GitHub Pages en cada push a `main`. Solo tienes que ir a **Settings → Pages → Source → GitHub Actions**. Para Netlify, Cloudflare Pages u otros hosts, mira [Publicar](https://jrcesara7-bit.github.io/folderdocs/#/publicar/02-otros-hosts).
+`.github/workflows/pages.yml` deploys the site to GitHub Pages on every push to `main`. Just go to **Settings → Pages → Source → GitHub Actions**. For any other static host (Netlify, Cloudflare Pages, nginx…), run `npm run build` and publish the `_site/` folder. See [Publish](https://jrcesara7-bit.github.io/folderdocs/#/publish/02-other-hosts).
 
-## Limitaciones
+## Limitations
 
-Se dicen aquí para que decidas con información:
+Stated up front so you can decide with the facts:
 
-- **SEO por página: no.** El contenido se pinta en el navegador y las direcciones usan `#/ruta`, así que los buscadores ven el sitio como una sola página. Para documentación pública que deba posicionar cada página, usa un generador que produzca un HTML por página (MkDocs, Docusaurus, VitePress, Astro Starlight…); tus `.md` se reutilizan casi sin cambios.
-- Requiere JavaScript.
-- Sin versionado de documentación ni selector de idioma integrado.
-- El HTML dentro de los `.md` no se filtra: no es apto para contenido de usuarios desconocidos.
+- **No per-page SEO.** Content is rendered in the browser and URLs use `#/path`, so search engines see the site as a single page. For public documentation where each page should rank, use a generator that outputs one HTML file per page (MkDocs, Docusaurus, VitePress, Astro Starlight…); your `.md` files carry over almost unchanged.
+- Requires JavaScript.
+- No documentation versioning. Languages work as one site per language.
+- HTML inside `.md` files is not sanitised: not suitable for content from untrusted users.
 
-Más contexto en [Por qué esta plantilla](https://jrcesara7-bit.github.io/folderdocs/#/acerca/01-por-que-esta-plantilla).
+More context in [Why this template](https://jrcesara7-bit.github.io/folderdocs/#/about/01-why-this-template).
 
-## Desarrollo y contribuciones
+## Development and contributing
 
 ```bash
-npm run dev     # servidor local con menú automático
-npm run nav     # regenera docs/nav.json
-npm test        # pruebas del generador de menú
+npm run dev     # local server with automatic menus
+npm run nav     # regenerate every nav.json
+npm run build   # assemble the publishable site into _site/
+npm test        # tests for the tooling
 ```
 
-Las contribuciones son bienvenidas: lee [CONTRIBUTING.md](CONTRIBUTING.md) antes de abrir una solicitud de cambio. Los cambios por versión están en el [CHANGELOG](CHANGELOG.md).
+Contributions are welcome: read [CONTRIBUTING.md](CONTRIBUTING.md) first. Release notes are in the [CHANGELOG](CHANGELOG.md).
 
-## Créditos y licencia
+## Credits and license
 
-- [marked](https://github.com/markedjs/marked) (MIT) y [highlight.js](https://highlightjs.org) (BSD-3-Clause), incluidos en `assets/vendor/`.
-- Estética inspirada en [Godot Docs](https://docs.godotengine.org) y Read the Docs; no se usan sus recursos gráficos.
+- [marked](https://github.com/markedjs/marked) (MIT) and [highlight.js](https://highlightjs.org) (BSD-3-Clause), bundled in `assets/vendor/`.
+- Look inspired by [Godot Docs](https://docs.godotengine.org) and Read the Docs; none of their assets are used.
 
-Distribuido bajo la licencia [MIT](LICENSE).
+Released under the [MIT](LICENSE) license.
