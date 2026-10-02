@@ -1,6 +1,10 @@
+---
+id: install
+description: Instala folderdocs, la plantilla de documentación en Markdown: clónala, arranca el servidor local y ve tu sitio en un minuto.
+---
 # Instalación
 
-La plantilla es una carpeta con archivos estáticos. Solo necesitas **Node.js 18 o superior** para el servidor de desarrollo, que además regenera el menú; para publicar no hace falta Node en el servidor.
+folderdocs es una carpeta de archivos Markdown más un pequeño script de construcción. Necesitas **Node.js 18 o superior** para previsualizar y compilar el sitio; el resultado publicado son archivos estáticos, así que tu servidor no necesita Node.
 
 ## Opción A: usar como plantilla de GitHub
 
@@ -26,10 +30,10 @@ rm -rf .git && git init
 npm run dev        # o: node tools/serve.mjs
 ```
 
-Abre <http://localhost:8000>. Cada vez que recargues, el menú se regenera a partir de las carpetas de `docs/`.
+Abre <http://localhost:8000> (el español está en <http://localhost:8000/es/>). El servidor construye el sitio en memoria y lo reconstruye cada vez que guardas un archivo, así que basta con refrescar el navegador.
 
 > [!WARNING]
-> No abras `index.html` con doble clic. Los navegadores bloquean la lectura de archivos locales (`file://`) y verías un error. Usa siempre el servidor local.
+> No abras los archivos HTML generados con doble clic (`file://`): los enlaces entre páginas no se resolverían. Usa siempre `npm run dev` para previsualizar y `npm run build` para generar los archivos que publicas.
 
 > [!TIP]
 > El puerto se cambia así: `node tools/serve.mjs 3000`.

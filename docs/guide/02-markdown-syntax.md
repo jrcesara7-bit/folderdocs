@@ -1,3 +1,7 @@
+---
+id: syntax
+description: Markdown features supported by folderdocs: tables, task lists, admonitions, highlighted code and safe use of HTML.
+---
 # Markdown syntax
 
 The site uses Markdown with GitHub extensions (*GFM*): tables, task lists, strikethrough and code blocks.

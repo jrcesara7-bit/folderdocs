@@ -1,24 +1,32 @@
+---
+id: languages
+description: Publica tu documentación en varios idiomas con selector de idioma, enlaces entre traducciones y etiquetas hreflang.
+---
 # Idioma
 
-La interfaz (buscador, botones, títulos de los avisos, mensajes de error) está disponible en español e inglés. Se elige en `docs/config.json`:
+Hay dos cosas distintas: el **idioma de la interfaz** y el **idioma del contenido**.
+
+## Idioma de la interfaz
+
+La interfaz (buscador, botones, títulos de los avisos, «Editar en GitHub») está disponible en español e inglés. Se elige en el `config.json` de cada idioma:
 
 ```json
 { "site": { "lang": "en" } }
 ```
 
-También se ajusta el atributo `lang` del documento. Si el idioma no existe, se usa inglés.
+También se ajusta el atributo `lang` de la página. Si el idioma no existe, se usa inglés.
 
 > [!NOTE]
 > El idioma de la interfaz es independiente del contenido: tus `.md` pueden estar en cualquier idioma.
 
-## Añadir otro idioma
+## Añadir otro idioma de interfaz
 
-Los textos están en el objeto `I18N` al inicio de `assets/js/app.js`. Copia el bloque `en`, cámbiale el código y traduce los valores:
+Los textos están en `tools/lib/i18n.mjs`. Copia el bloque `en`, cámbiale el código y traduce los valores:
 
 ```js
-const I18N = {
-  es: { /* … */ },
+export const I18N = {
   en: { /* … */ },
+  es: { /* … */ },
   fr: { search: 'Rechercher dans la documentation', /* … */ },
 };
 ```
@@ -27,27 +35,28 @@ Cualquier clave que falte en tu idioma se muestra en inglés, así que puedes tr
 
 ## Un sitio en varios idiomas
 
-Este repositorio publica **el inglés en la raíz y el español en `/es/`**, y tú puedes hacer lo mismo:
+Este repositorio publica **el inglés en la raíz y el español bajo `/es/`**. La regla es sencilla:
 
-1. Mantén una carpeta de documentación por idioma: `docs/` (inglés) y `docs-es/` (español). Cada una tiene su propio `config.json`, `nav.json` y páginas.
-2. Añade una página de entrada por cada idioma extra: `es/index.html`, una copia de `index.html` que apunta a la otra carpeta mediante el atributo `data-docs`:
+| Carpeta | Se publica en |
+| ------- | ------------- |
+| `docs/` (idioma por defecto) | `/` |
+| `docs-es/` | `/es/` |
+| `docs-fr/` | `/fr/` |
 
-```html
-<html lang="es" data-theme="dark" data-docs="../docs-es">
+Para añadir un idioma, crea `docs-xx/` con su propio `config.json` (define `lang`) y su `index.md`. Eso es todo: la compilación la encuentra y aparece un selector de idioma en el pie del menú. Para quitar un idioma, borra su carpeta.
+
+### Enlazar páginas traducidas
+
+Por defecto, el selector lleva a la portada del otro idioma. Si pones el mismo `id` en el front matter de las dos versiones de una página, el selector las enlaza directamente:
+
+```markdown
+---
+id: instalacion
+---
+# Instalación
 ```
 
-   Ajusta las rutas de los recursos en esa copia (`../assets/…`).
-3. Añade la lista `languages` a cada `config.json` para que aparezca un selector en el pie del menú. Los `href` son relativos al `index.html` de cada idioma:
-
-```json
-// docs/config.json (inglés, servido en /)
-"languages": [{ "label": "EN", "href": "./" }, { "label": "ES", "href": "es/" }]
-
-// docs-es/config.json (español, servido en /es/)
-"languages": [{ "label": "EN", "href": "../" }, { "label": "ES", "href": "./" }]
-```
-
-4. Las herramientas encuentran todas las carpetas llamadas `docs` o `docs-*` y cada carpeta de entrada de idioma, así que `npm run dev`, `npm run nav` y `npm run build` atienden todos los idiomas sin configuración extra.
+Las páginas enlazadas también reciben etiquetas `<link rel="alternate" hreflang>` y se emparejan en el sitemap, lo que ayuda a los buscadores a mostrar la versión correcta a cada visitante (esto necesita la [URL del sitio](01-configuracion.md)).
 
 > [!TIP]
-> Para añadir francés, crea `docs-fr/` y `fr/index.html` del mismo modo. Para quitar un idioma, borra sus dos carpetas y su entrada en `languages`.
+> Los nombres de carpetas y archivos pueden estar traducidos (`/es/empezar/instalacion/`): las páginas se emparejan por `id`, no por ruta.

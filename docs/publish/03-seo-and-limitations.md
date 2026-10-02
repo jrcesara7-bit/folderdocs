@@ -1,37 +1,38 @@
+---
+id: seo
+description: How folderdocs helps your documentation rank: one HTML page per Markdown file, canonical URLs, sitemap, and honest expectations.
+---
 # SEO and limitations
 
-Worth knowing before you choose this template.
+## What the build does for search engines
 
-## How content is delivered
+Every Markdown file becomes its own complete HTML page, so crawlers see your content without running any JavaScript. For each page folderdocs generates:
 
-The browser downloads `index.html`, and a script reads the `.md` of the requested page and turns it into HTML. Each page's address uses a fragment (`#/guide/02-markdown-syntax`).
+- a **clean, stable URL** (`/guide/markdown-syntax/`);
+- a `<title>` (`Page · Site`) and a **meta description**, from the front matter or the first paragraph;
+- a **canonical link** and **Open Graph / Twitter** tags for good link previews;
+- **breadcrumb structured data** (JSON-LD) matching the visible breadcrumbs;
+- `hreflang` links between translations (see [Languages](../customize/03-languages.md));
+- a **`sitemap.xml`** and **`robots.txt`**, and a `404.html` marked `noindex`;
+- descriptive image `alt` text, heading anchors and a "skip to content" link.
 
-## What it means for search engines
+The canonical links, the sitemap and `og:url` need your [site URL](../customize/01-configuration.md), which GitHub Pages deployments detect automatically.
 
-> [!WARNING]
-> Search engines treat everything after `#` as the same URL. To them, the site is **a single page**, so the pages of your documentation are not indexed or shown separately in results.
+## What you should do
 
-What does work:
+- Give every page a clear title and, for the important ones, a hand-written `description:`.
+- Write real `alt` text for images.
+- Set `site.url` if you use a custom domain.
+- Submit `https://your-site/sitemap.xml` in [Google Search Console](https://search.google.com/search-console) and Bing Webmaster Tools.
+- Link to your documentation from your README, your project's website and other places people visit.
 
-- The home page is indexed with the title and description from `index.html`.
-- Sharing links on social networks shows the preview from `og:title`, `og:description` and `og:image` (the whole site's, not each page's).
-- Inside the site, the sidebar search finds any page.
-
-## When it is a good fit
-
-- Documentation for a project or library that people reach from the README or the repository.
-- Internal, team or product manuals.
-- Notes, personal guides and small wikis.
-- Documentation prototypes you may migrate later.
-
-## When to choose another tool
-
-If you need **each page** to show up on Google (public documentation that earns organic traffic), use a generator that outputs one HTML file per page: MkDocs, Docusaurus, VitePress, Astro Starlight… Your `.md` files carry over almost unchanged.
+> [!IMPORTANT]
+> Good URLs and metadata make your pages **indexable**; they don't decide where you rank. Ranking depends on the quality of your content, links from other sites and how long the site has existed. Expect it to take weeks for new pages to show up.
 
 ## Other limitations
 
-- Requires JavaScript.
-- The home page (`index.md`) is not included in search.
-- No documentation versioning. Languages work as one site per language (see [Languages](../customize/03-languages.md)).
-- Search is plain text: no fuzzy matching and no ranking by semantic relevance.
-- HTML in `.md` files is not filtered: it is not suitable for receiving content from unknown users.
+- **It needs a build step.** Previewing and publishing use Node (`npm run dev`, `npm run build`); GitHub Pages runs it for you. Your server only receives static files.
+- **Search is plain text.** It runs in the browser on an index generated at build time, with no fuzzy matching or semantic ranking. It does need JavaScript; everything else works without it.
+- **No documentation versioning.** Languages are supported through one folder per language.
+- **HTML in `.md` files is not filtered.** Only publish content you trust.
+- **The search index holds the text of every page** (the first 20,000 characters of each). That is fine for hundreds of pages; for a very large site, use a dedicated search service.

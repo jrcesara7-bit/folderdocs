@@ -1,37 +1,43 @@
-# Why this template
+---
+id: why
+description: How folderdocs compares with Docsify, MkDocs, Docusaurus and VitePress, and when each is the better choice.
+---
+# Why folderdocs
 
-There are very good documentation tools. This one fills a specific space: **having a presentable documentation site by writing only Markdown, without installing or building anything**.
+There are very good documentation tools. This one fills a specific space: **a presentable, search-engine-friendly documentation site made only of Markdown files and folders, with almost nothing to configure**.
 
 ## What it aims for
 
-- Creating a page means creating a file.
-- The menu is not maintained by hand.
-- It can be read and modified entirely in an afternoon: there are three files of its own (`app.js`, `theme.css`, `build-nav.mjs`).
+- Creating a page means creating a file; the menu and the URLs follow your folders.
+- It can be read and modified entirely in an afternoon: the generator is a handful of small files in `tools/lib/`, plus one stylesheet and one short script.
 - It looks polished from day one, with a style close to Read the Docs.
+- It sends the browser finished HTML, so pages are fast and readable even without JavaScript.
 
 ## Comparison with other options
 
 | | folderdocs | Docsify | MkDocs | Docusaurus / VitePress |
 | --- | --- | --- | --- | --- |
-| Build step | No | No | Yes | Yes |
-| Needs installing | Node (only for the local server) | Nothing (CDN) or npm | Python | Node + dependencies |
+| How pages are built | Static HTML at build time | In the browser | Static HTML at build time | Static HTML at build time |
+| Needs installing | Node | Nothing (CDN) or npm | Python | Node + dependencies |
 | Menu | Automatic from folders | Manual (`_sidebar.md`) | Automatic or manual | Automatic or manual |
-| One HTML page per document (SEO) | No | No | Yes | Yes |
+| One HTML page per document (SEO) | Yes | No | Yes | Yes |
 | Theme and plugin ecosystem | No | Yes | Very broad | Very broad |
-| Versioned / multilingual docs | No / one site per language | Limited | Yes | Yes |
+| Versioned documentation | No | Limited | Yes | Yes |
+| Multilingual | One folder per language, switcher included | Limited | Yes | Yes |
+| Dependencies to install | None (libraries are bundled) | None | Several | Many |
 
 The rows for the other tools are a general guide: check their documentation for current details.
 
 ## When to choose it
 
-- You want the lightest possible solution and don't mind pages not being indexed one by one.
-- You want to understand and modify the code without learning a framework.
-- You want a clean starting point for a personal or team project.
+- You want a lightweight, readable generator with good defaults and no framework to learn.
+- You want to understand and modify the code yourself.
+- You want a clean starting point for a personal, team or small-project site.
 
 ## When not to
 
-- Public documentation whose traffic depends on search engines.
-- You need documentation versions, built-in translations or a plugin ecosystem.
+- You need documentation versions, a plugin ecosystem, or rich built-in components (tabs, diagrams, API playgrounds…). Look at MkDocs Material, Docusaurus or VitePress.
+- You need search that scales to thousands of pages or tolerates typos.
 
 ## Credits
 

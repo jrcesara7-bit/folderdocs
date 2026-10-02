@@ -1,6 +1,10 @@
+---
+id: organize
+description: Cómo las carpetas, los archivos, el front matter y _meta.json definen el menú, los títulos, el orden y las URL en folderdocs.
+---
 # Organizar el contenido
 
-El menú lateral se genera a partir de las carpetas y archivos de `docs/`. No hay lista que mantener.
+El menú lateral y las URL se generan a partir de las carpetas y archivos de `docs/`. No hay lista que mantener.
 
 | Qué creas | Qué aparece en el menú |
 | --------- | ---------------------- |
@@ -25,7 +29,7 @@ Para una **carpeta**: `title` de su `_meta.json`; si no existe y es una subcarpe
 ## Orden
 
 1. `order:` en el front matter (páginas) o en `_meta.json` (carpetas).
-2. Un prefijo numérico en el nombre: `01-instalacion.md`, `02-uso.md`. El prefijo no se muestra.
+2. Un prefijo numérico en el nombre: `01-instalacion.md`, `02-uso.md`.
 3. Orden alfabético.
 
 ```markdown
@@ -39,16 +43,24 @@ order: 1
 { "title": "Primeros pasos", "order": 2 }
 ```
 
-> [!NOTE]
-> El prefijo numérico forma parte de la URL (`#/empezar/01-instalacion`). Si prefieres URLs sin números, usa `order:` en lugar del prefijo.
+## URL
+
+Cada página se publica en una URL limpia construida con sus carpetas y su nombre:
+
+| Archivo | URL |
+| ------- | --- |
+| `docs/primeros-pasos/01-instalacion.md` | `/primeros-pasos/instalacion/` |
+| `docs/guia/index.md` | `/guia/` |
+| `docs/guía/Cómo empezar.md` | `/guia/como-empezar/` |
+
+- El prefijo numérico de orden **se elimina** de la URL, así que puedes reordenar páginas sin cambiar sus direcciones.
+- Los nombres se pasan a minúsculas, se quitan los acentos y los espacios se vuelven guiones.
+- Si dos páginas acabaran en la misma URL, la compilación se detiene y te dice cuáles.
+- Los demás idiomas viven bajo su propio prefijo, como `/es/`.
+
+> [!IMPORTANT]
+> Renombrar un archivo o una carpeta cambia su URL. Elige nombres con los que puedas vivir antes de publicar y compartir enlaces.
 
 ## Cuándo se actualiza el menú
 
-El menú se guarda en `docs/nav.json`, que genera `tools/build-nav.mjs`:
-
-- **En local**: `npm run dev` lo regenera en cada recarga.
-- **A mano**: `npm run nav`.
-- **Al publicar con GitHub Pages**: el flujo incluido lo regenera en cada despliegue.
-
-> [!IMPORTANT]
-> No edites `docs/nav.json` a mano: se sobrescribe. Si lo subes al repositorio desactualizado, la integración continua te avisa.
+El menú se construye junto con las páginas: `npm run dev` lo reconstruye cada vez que guardas, y `npm run build` (que GitHub Pages ejecuta por ti) lo reconstruye en cada despliegue. No hay `nav.json` ni otro archivo generado que subir.

@@ -1,3 +1,7 @@
+---
+id: theme
+description: Cambia los colores, el acento, los recuadros, el resaltado de código y la tipografía de tu sitio con variables CSS.
+---
 # Tema y colores
 
 Todo el diseño está en `assets/css/theme.css`, y los colores son variables CSS al principio del archivo. No hace falta tocar ninguna otra regla para cambiar la paleta.
@@ -41,8 +45,8 @@ Se controla con las variables `--hl-*` (comentarios, palabras clave, cadenas, n�
 
 ## Tema inicial
 
-El tema por defecto es el oscuro. Para que arranque en claro, cambia `data-theme="dark"` por `data-theme="light"` en la etiqueta `<html>` de `index.html`. La elección del visitante se guarda en su navegador y tiene prioridad.
+El tema por defecto es el oscuro. Para que arranque en claro, cambia `data-theme="dark"` por `data-theme="light"` en la etiqueta `<html>` que produce `tools/lib/template.mjs`. La elección del visitante se guarda en su navegador y tiene prioridad.
 
 ## Ancho y tipografía
 
-El ancho máximo del sitio es `max-width: 1310px` en `.layout`. La tipografía usa fuentes del sistema (sin descargar nada); cámbiala en la regla `body`.
+El ancho máximo del sitio es `max-width: 1310px` en `.layout`. La tipografía usa fuentes del sistema (no se descarga nada); cámbiala en la regla `body`.

@@ -1,37 +1,38 @@
+---
+id: seo
+description: Cómo ayuda folderdocs a posicionar tu documentación: una página HTML por archivo, URL canónicas, sitemap y expectativas realistas.
+---
 # SEO y limitaciones
 
-Conviene saberlo antes de elegir esta plantilla.
+## Qué hace la compilación por los buscadores
 
-## Cómo se publica el contenido
+Cada archivo Markdown se convierte en su propia página HTML completa, así que los rastreadores ven tu contenido sin ejecutar JavaScript. Para cada página folderdocs genera:
 
-El navegador descarga `index.html`, y un script lee el `.md` de la página pedida y lo convierte en HTML. La dirección de cada página usa un fragmento (`#/guia/02-sintaxis-markdown`).
+- una **URL limpia y estable** (`/guia/sintaxis-markdown/`);
+- un `<title>` (`Página · Sitio`) y una **meta descripción**, desde el front matter o el primer párrafo;
+- un **enlace canónico** y etiquetas **Open Graph / Twitter** para buenas vistas previas;
+- **datos estructurados de migas de pan** (JSON-LD) que coinciden con las migas visibles;
+- enlaces `hreflang` entre traducciones (ver [Idioma](../personalizar/03-idioma.md));
+- un **`sitemap.xml`** y un **`robots.txt`**, y un `404.html` marcado como `noindex`;
+- texto alternativo descriptivo en imágenes, anclas en los encabezados y un enlace «saltar al contenido».
 
-## Qué implica para los buscadores
+Los enlaces canónicos, el sitemap y `og:url` necesitan la [URL de tu sitio](../personalizar/01-configuracion.md), que los despliegues en GitHub Pages detectan automáticamente.
 
-> [!WARNING]
-> Los buscadores tratan todo lo que va tras `#` como la misma URL. Para ellos, el sitio es **una sola página**, así que las páginas de tu documentación no se indexan ni aparecen por separado en los resultados.
+## Qué conviene que hagas
 
-Lo que sí funciona:
+- Da a cada página un título claro y, a las importantes, un `description:` escrito a mano.
+- Escribe un texto `alt` real en las imágenes.
+- Define `site.url` si usas un dominio propio.
+- Envía `https://tu-sitio/sitemap.xml` en [Google Search Console](https://search.google.com/search-console) y en Bing Webmaster Tools.
+- Enlaza tu documentación desde tu README, la web de tu proyecto y otros sitios que la gente visite.
 
-- La portada se indexa con el título y la descripción de `index.html`.
-- Compartir enlaces en redes muestra la vista previa de `og:title`, `og:description` y `og:image` (la del sitio entero, no la de cada página).
-- Dentro del sitio, el buscador del menú encuentra cualquier página.
-
-## Cuándo es un buen encaje
-
-- Documentación de un proyecto o librería que la gente alcanza desde el README o el repositorio.
-- Manuales internos, de equipo o de producto.
-- Apuntes, guías personales y wikis pequeñas.
-- Prototipos de documentación que luego puedes migrar.
-
-## Cuándo elegir otra herramienta
-
-Si necesitas que **cada página** salga en Google (documentación pública que capta tráfico orgánico), usa un generador que produzca un HTML por página: MkDocs, Docusaurus, VitePress, Astro Starlight… Tus `.md` se reutilizan casi sin cambios.
+> [!IMPORTANT]
+> Buenas URL y metadatos hacen que tus páginas se puedan **indexar**; no deciden en qué posición salen. La posición depende de la calidad de tu contenido, de los enlaces de otros sitios y de la antigüedad del sitio. Cuenta con que las páginas nuevas tarden semanas en aparecer.
 
 ## Otras limitaciones
 
-- Requiere JavaScript activado.
-- La portada (`index.md`) no entra en el buscador.
-- Sin versionado de documentación. Los idiomas funcionan como un sitio por idioma (ver [Idioma](../personalizar/03-idioma.md)).
-- El buscador es de texto simple: no hace coincidencias aproximadas ni ordena por relevancia semántica.
-- El HTML de los `.md` no se filtra: no es apto para recibir contenido de usuarios desconocidos.
+- **Necesita un paso de construcción.** Previsualizar y publicar usan Node (`npm run dev`, `npm run build`); GitHub Pages lo ejecuta por ti. Tu servidor solo recibe archivos estáticos.
+- **El buscador es de texto simple.** Funciona en el navegador con un índice generado al compilar, sin coincidencias aproximadas ni ordenación semántica. Sí necesita JavaScript; todo lo demás funciona sin él.
+- **Sin versionado de documentación.** Los idiomas se resuelven con una carpeta por idioma.
+- **El HTML dentro de los `.md` no se filtra.** Publica solo contenido en el que confíes.
+- **El índice de búsqueda contiene el texto de cada página** (los primeros 20 000 caracteres de cada una). Va bien con cientos de páginas; para un sitio muy grande, usa un servicio de búsqueda dedicado.

@@ -1,6 +1,10 @@
+---
+id: install
+description: Install folderdocs, the Markdown documentation template: clone it, run the local server and see your site in a minute.
+---
 # Installation
 
-The template is a folder of static files. You only need **Node.js 18 or later** for the development server, which also regenerates the menu. Publishing does not require Node on the server.
+folderdocs is a folder of Markdown files plus a small build script. You need **Node.js 18 or later** to preview and build the site; the published result is plain static files, so your server doesn't need Node.
 
 ## Option A: use it as a GitHub template
 
@@ -26,10 +30,10 @@ rm -rf .git && git init
 npm run dev        # or: node tools/serve.mjs
 ```
 
-Open <http://localhost:8000>. Every time you reload, the menu is regenerated from the folders in `docs/`.
+Open <http://localhost:8000>. The server builds the site in memory and rebuilds it whenever you save a file, so refresh the browser to see your changes.
 
 > [!WARNING]
-> Don't open `index.html` by double-clicking it. Browsers block reading local files (`file://`) and you would see an error. Always use the local server.
+> Don't open the generated HTML files by double-clicking them (`file://`): links between pages won't resolve. Always use `npm run dev` to preview and `npm run build` to produce the files you publish.
 
 > [!TIP]
 > Change the port like this: `node tools/serve.mjs 3000`.
