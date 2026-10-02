@@ -172,34 +172,32 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .sidebar-body::-webkit-scrollbar { width: 8px; }
 .sidebar-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
+/* The menu is built from native <details>/<summary>, so it opens and closes without JavaScript. */
+.nav-section { margin-bottom: 6px; }
 .nav-section-title {
   display: flex; align-items: center; gap: 10px;
-  width: 100%;
   padding: 10px 20px;
-  border: 0;
-  background: transparent;
+  list-style: none;
+  cursor: pointer;
   color: var(--accent);
   font-size: 14px;
   font-weight: 800;
   letter-spacing: .06em;
   text-transform: uppercase;
-  text-align: left;
 }
+.nav-section-title::-webkit-details-marker, .nav-row::-webkit-details-marker { display: none; }
 .nav-section-title::before {
   content: "❯";
   display: inline-block;
   font-size: 12px;
   transition: transform .15s;
 }
-.nav-section.open > .nav-section-title { background: var(--bg-section-open); margin-bottom: 4px; }
-.nav-section.open > .nav-section-title::before { transform: rotate(90deg); }
-.nav-section { margin-bottom: 6px; }
+.nav-section[open] > .nav-section-title { background: var(--bg-section-open); margin-bottom: 4px; }
+.nav-section[open] > .nav-section-title::before { transform: rotate(90deg); }
 
-.nav-list { list-style: none; margin: 0; padding: 0; display: none; }
-.nav-section.open > .nav-list,
-.has-children.open > .nav-list { display: block; }
-
+.nav-list { list-style: none; margin: 0; padding: 0; }
 .nav-row { display: flex; align-items: center; }
+summary.nav-row { list-style: none; cursor: pointer; }
 .nav-link {
   flex: 1;
   display: block;
@@ -209,28 +207,23 @@ button { font: inherit; color: inherit; cursor: pointer; }
   line-height: 1.5;
   text-decoration: none !important;
 }
-.nav-link:hover { background: var(--bg-hover); color: var(--text-strong); }
+.nav-label { cursor: pointer; }
+a.nav-link:hover { background: var(--bg-hover); color: var(--text-strong); }
 .nav-link.active { color: var(--text-strong); font-weight: 700; background: var(--bg-hover); box-shadow: inset 3px 0 0 var(--accent); }
 
-.expander {
+/* Expander box (+ / −) for groups of pages */
+.has-children > details > summary::before {
+  content: "+";
   flex: none;
   width: 14px; height: 14px;
   margin-left: 15px; margin-right: -12px;
-  padding: 0;
   border: 1px solid var(--text-muted);
   border-radius: 2px;
-  background: transparent;
-  position: relative;
-  z-index: 1;
+  color: var(--text-muted);
+  font-size: 12px; line-height: 12px; text-align: center;
 }
-.expander::before, .expander::after {
-  content: ""; position: absolute; background: var(--text-muted);
-  left: 50%; top: 50%; transform: translate(-50%, -50%);
-}
-.expander::before { width: 8px; height: 1px; }
-.expander::after  { width: 1px; height: 8px; }
-.has-children.open > .nav-row > .expander::after { display: none; }
-.has-children > .nav-row > .nav-link { padding-left: 24px; }
+.has-children > details[open] > summary::before { content: "−"; }
+.has-children > details > summary .nav-link { padding-left: 24px; }
 .nav-list .nav-list .nav-link { padding-left: 40px; font-size: 14.5px; }
 
 .sidebar-foot {
@@ -368,6 +361,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   opacity: 0;
   transition: opacity .15s;
 }
+html:not(.js) .copy-btn { display: none; }
 .code-block:hover .copy-btn, .copy-btn:focus { opacity: 1; }
 .copy-btn:hover { color: var(--text-strong); }
 
@@ -430,7 +424,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* --------------------------------------------------------------------------
    Home page tiles (written as HTML inside the .md)
-   <div class="tiles"><a class="tile green" href="#/path">…</a></div>
+   <div class="tiles"><a class="tile green" href="path/to/page.md">…</a></div>
    -------------------------------------------------------------------------- */
 .doc .tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 1.4rem 0; }
 .doc .tile {
@@ -446,6 +440,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   transition: filter .15s, transform .15s;
 }
 .doc .tile:hover { filter: brightness(1.15); color: #fff; transform: translateY(-1px); }
+.doc .tile strong { color: #fff; }
 .doc .tile.teal { background: var(--tile-teal); }
 .doc .tile.blue { background: var(--tile-blue); }
 .doc .tile.red  { background: var(--tile-red); }
@@ -465,6 +460,20 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .pager a:hover { background: var(--bg-hover); text-decoration: none; }
 .pager .next { margin-left: auto; text-align: right; }
 .site-footer { margin-top: 2rem; color: var(--text-muted); font-size: 14px; }
+
+/* --------------------------------------------------------------------------
+   Accessibility and no-JavaScript fallbacks
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute; left: 8px; top: -48px; z-index: 100;
+  padding: 8px 14px;
+  border-radius: 4px;
+  background: var(--accent); color: #fff;
+  font-weight: 700;
+}
+.skip-link:focus { top: 8px; color: #fff; text-decoration: none; }
+html:not(.js) .search, html:not(.js) .theme-btn, html:not(.js) .icon-btn { display: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* --------------------------------------------------------------------------
    Mobile / tablet
@@ -493,10 +502,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .head-links { text-align: left; white-space: normal; }
   .doc .tiles { grid-template-columns: 1fr; }
   .doc .anchor { display: none; }
+  html:not(.js) .sidebar { position: static; transform: none; width: auto; height: auto; }
+  html:not(.js) .sidebar-body { overflow: visible; }
 }
 
 @media print {
-  .sidebar, .topbar, .head-links, .pager, .copy-btn { display: none !important; }
+  .sidebar, .topbar, .head-links, .pager, .copy-btn, .skip-link { display: none !important; }
   .layout { display: block; }
   body, .content { background: #fff; color: #000; }
 }

@@ -1,3 +1,7 @@
+---
+id: theme
+description: Change the colors, accent, tiles, code highlighting and typography of your documentation site with CSS variables.
+---
 # Theme and colors
 
 The whole design is in `assets/css/theme.css`, and the colors are CSS variables at the top of the file. You don't need to touch any other rule to change the palette.
@@ -41,7 +45,7 @@ Controlled by the `--hl-*` variables (comments, keywords, strings, numbers…), 
 
 ## Initial theme
 
-The default theme is dark. To start in light, change `data-theme="dark"` to `data-theme="light"` on the `<html>` tag in `index.html`. The visitor's choice is saved in their browser and takes priority.
+The default theme is dark. To start in light, change `data-theme="dark"` to `data-theme="light"` in the `<html>` tag produced by `tools/lib/template.mjs`. The visitor's choice is saved in their browser and takes priority.
 
 ## Width and typography
 

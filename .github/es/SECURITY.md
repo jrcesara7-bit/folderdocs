@@ -11,11 +11,11 @@ Intentaré responder en unos días. Esto es un proyecto mantenido por una sola p
 
 ## Qué se considera en alcance
 
-- Ejecución de código o inyección de HTML/JavaScript provocada por la plantilla en sí (`assets/js/app.js`, `tools/`).
+- Ejecución de código o inyección de HTML/JavaScript provocada por la plantilla en sí (`assets/js/site.js`, `tools/`, la plantilla de página generada).
 - Lectura de archivos fuera del proyecto en `tools/serve.mjs`.
 
 ## Fuera de alcance
 
-- El HTML que escribes tú dentro de tus `.md` se inserta sin filtrar **por diseño** (lo necesitan los recuadros de portada). Publica solo contenido en el que confíes y revisa los cambios de colaboradores externos.
+- El HTML que escribes tú dentro de tus `.md` se copia sin filtrar a las páginas generadas **por diseño** (lo necesitan los recuadros de portada). Publica solo contenido en el que confíes y revisa los cambios de colaboradores externos.
 - `tools/serve.mjs` es un servidor de **desarrollo**: no lo expongas a Internet.
-- Vulnerabilidades en `marked` o `highlight.js` (copiados en `assets/vendor/`): repórtalas a esos proyectos. Si afectan a la plantilla, avísame para actualizar la copia incluida.
+- Vulnerabilidades en `marked` o `highlight.js` (copiados en `tools/vendor/`): repórtalas a esos proyectos. Si afectan a la plantilla, avísame para actualizar la copia incluida.

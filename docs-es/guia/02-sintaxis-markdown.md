@@ -1,3 +1,7 @@
+---
+id: syntax
+description: Funciones de Markdown que admite folderdocs: tablas, listas de tareas, avisos, código resaltado y uso seguro de HTML.
+---
 # Sintaxis Markdown
 
 Se usa Markdown con extensiones de GitHub (*GFM*): tablas, listas de tareas, tachado y bloques de código.

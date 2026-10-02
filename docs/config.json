@@ -1,15 +1,11 @@
 {
   "site": {
     "title": "folderdocs",
-    "subtitle": "Markdown documentation, no build step",
+    "subtitle": "Markdown documentation, ready for search engines",
+    "description": "folderdocs turns Markdown files and folders into a fast static documentation site: automatic menu, one indexable HTML page per file, search and light/dark themes.",
     "footer": "folderdocs · MIT License",
-    "version": "v1.0",
+    "version": "v2.0",
     "lang": "en",
-    "languages": [
-      { "label": "EN", "href": "./" },
-      { "label": "ES", "href": "es/" }
-    ],
-    "home": "index",
     "repo": "jrcesara7-bit/folderdocs",
     "branch": "main",
     "contributeUrl": "https://github.com/jrcesara7-bit/folderdocs/blob/main/CONTRIBUTING.md",

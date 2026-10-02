@@ -1,42 +1,44 @@
+---
+id: structure
+description: Qué hace cada carpeta y archivo de folderdocs, y cuáles necesitas editar de verdad.
+---
 # Estructura del proyecto
 
 ```text
 .
-├── index.html               página única que carga todo (inglés)
-├── es/index.html            la misma página para el sitio en español
-├── assets/
-│   ├── css/theme.css        tema (colores en variables)
-│   ├── js/app.js            lector de Markdown, menú, búsqueda
-│   ├── img/                 favicon e imagen para redes
-│   └── vendor/              marked y highlight.js (incluidos)
-├── docs/                    ← documentación en inglés
-├── docs-es/                 ← documentación en español
+├── docs/                    ← tu documentación (idioma por defecto)
 │   ├── config.json          nombre, idioma, repositorio…
-│   ├── nav.json             menú (generado, no se edita)
 │   ├── index.md             portada
 │   └── …carpetas con .md
+├── docs-es/                 versión en español de la documentación
+├── assets/
+│   ├── css/theme.css        el tema (los colores son variables)
+│   ├── js/site.js           buscador, cambio de tema, menú móvil, botones de copiar
+│   └── img/                 favicon e imagen para redes
 ├── tools/
-│   ├── build-nav.mjs        genera cada nav.json
-│   ├── build-site.mjs       ensambla el sitio en _site/
-│   └── serve.mjs            servidor de desarrollo
-└── tests/                   pruebas del generador de menú
+│   ├── build-site.mjs       construye el sitio en _site/
+│   ├── serve.mjs            servidor de desarrollo
+│   ├── lib/                 el generador (Markdown, menú, plantilla de página)
+│   └── vendor/              marked y highlight.js, solo se usan al compilar
+├── tests/                   pruebas del generador
+└── _site/                   resultado de la compilación (no se sube al repo)
 ```
 
-## Lo único que tocas a diario
+## Lo que tocas a diario
 
-La carpeta de documentación de tu idioma (aquí `docs-es/`). El resto (`index.html`, `assets/`, `tools/`) solo se modifica si quieres cambiar el comportamiento o el diseño. Si tu sitio tiene un solo idioma, puedes borrar la otra carpeta de documentación y `es/`.
+La carpeta de documentación de tu idioma. El resto solo se modifica si quieres cambiar el comportamiento o el diseño. Si tu sitio tiene un solo idioma, puedes borrar la carpeta del otro.
 
-## Qué es cada archivo de `docs/`
+## Qué es cada archivo de la carpeta de documentación
 
 | Archivo | Para qué sirve |
 | ------- | -------------- |
 | `config.json` | Nombre del sitio, idioma, enlace del repositorio… Ver [Configuración](../personalizar/01-configuracion.md). |
-| `nav.json` | Menú lateral. Lo genera `tools/build-nav.mjs`; se sobrescribe. |
-| `index.md` | La portada. No aparece en el menú ni en el buscador. |
+| `index.md` | La portada. No aparece en el menú. |
 | `*/_meta.json` | Opcional: título y orden de una carpeta. |
+| todo lo demás | Páginas (`.md`) y los archivos que usan, como imágenes. |
 
 > [!NOTE]
 > En estas páginas, `docs/` se refiere a la carpeta de documentación de tu sitio. En este repositorio, la del español es `docs-es/`.
 
 > [!NOTE]
-> Los archivos y carpetas cuyo nombre empieza con `_` o `.` se ignoran al generar el menú. Úsalo para borradores.
+> Los archivos y carpetas cuyo nombre empieza con `_` o `.` se ignoran al construir el sitio. Úsalo para borradores.

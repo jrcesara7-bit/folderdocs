@@ -1,3 +1,7 @@
+---
+id: github-pages
+description: Publish your folderdocs site on GitHub Pages with the included workflow, a custom domain and the right site URL.
+---
 # GitHub Pages
 
 The repository includes the workflow `.github/workflows/pages.yml`, which builds the site and publishes it on every push to `main`.
@@ -13,20 +17,21 @@ Your site will be at `https://YOUR-USER.github.io/YOUR-REPO/`.
 
 ## Before publishing
 
-- In `docs/config.json`: `repo` and `branch`.
-- In `index.html`: `<title>`, description and the URL of the `og:` tags.
+- In `docs/config.json`: `title`, `subtitle`, `description`, `repo` and `branch`.
 - Replace `assets/img/social-preview.png` with your own social image (1200×630 recommended).
+- Replace `assets/img/favicon.svg` with your icon.
 
 > [!NOTE]
-> The site uses relative paths and `#/` routes, so it works the same at `user.github.io/repo/` as on a custom domain, with no extra configuration.
+> The workflow detects your site URL automatically (`https://YOUR-USER.github.io/YOUR-REPO`), so canonical links and the sitemap are correct without any setup. With a custom domain, set `site.url` as explained below.
 
 ## Custom domain
 
-Under **Settings → Pages → Custom domain** enter your domain and create the DNS record GitHub tells you. Then update `og:url` and `og:image`.
+1. Under **Settings → Pages → Custom domain** enter your domain and create the DNS record GitHub tells you.
+2. Set `"url": "https://your-domain.com"` in `docs/config.json`, so canonical links and the sitemap use it.
 
-## What gets published
+## What the workflow does
 
-The workflow runs `npm run build`, which regenerates every menu and copies only what is needed into `_site/`: `index.html`, `assets/`, every documentation folder and each language's entry page. Tools, tests and the rest of the repository are not published.
+It runs `npm run build -- --strict`, which regenerates every page and **stops with an error if a link points to a page or file that doesn't exist**. Then it publishes `_site/`, which contains only what a browser needs: the pages, `assets/`, the images of your docs, the sitemap and `404.html`. The tools, tests and the rest of the repository are not published.
 
 > [!TIP]
-> If something fails, open the **Actions** tab and check the log of the "Deploy to GitHub Pages" workflow.
+> If something fails, open the **Actions** tab and check the log of the "Deploy to GitHub Pages" workflow. Broken links are listed there with the file that contains them.
