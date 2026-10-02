@@ -1,0 +1,12 @@
+{
+  "site": {
+    "title": "Mi Proyecto",
+    "subtitle": "Documentación de Mi Proyecto en español",
+    "footer": "© 2026 Mi Proyecto. Documentación generada desde archivos Markdown.",
+    "version": "v: estable",
+    "home": "index",
+    "repo": "jrcesara7-bit/plantilla-documentacion",
+    "branch": "main",
+    "contributeUrl": ""
+  }
+}

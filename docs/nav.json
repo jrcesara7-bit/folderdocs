@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Acerca de",
+    "items": [
+      {
+        "title": "Introducción",
+        "path": "acerca/introduccion"
+      },
+      {
+        "title": "Preguntas frecuentes",
+        "path": "acerca/faq"
+      }
+    ]
+  },
+  {
+    "title": "Primeros pasos",
+    "items": [
+      {
+        "title": "Instalación",
+        "path": "primeros-pasos/instalacion"
+      },
+      {
+        "title": "Tu primer proyecto",
+        "path": "primeros-pasos/primer-proyecto/index",
+        "items": [
+          {
+            "title": "Estructura de carpetas",
+            "path": "primeros-pasos/primer-proyecto/estructura"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Manual",
+    "items": [
+      {
+        "title": "Organizar el contenido",
+        "path": "manual/organizar-contenido"
+      },
+      {
+        "title": "Guía de estilo Markdown",
+        "path": "manual/guia-markdown"
+      }
+    ]
+  }
+]

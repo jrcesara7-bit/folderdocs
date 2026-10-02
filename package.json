@@ -1,0 +1,9 @@
+{
+  "name": "plantilla-documentacion",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/serve.mjs",
+    "nav": "node tools/build-nav.mjs"
+  }
+}
